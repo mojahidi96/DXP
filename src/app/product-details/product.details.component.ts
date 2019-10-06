@@ -1,10 +1,10 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {ProductService} from "./product.service";
-import {MatSnackBar, MatSnackBarConfig} from "@angular/material";
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ProductService } from "./product.service";
+import { MatSnackBar, MatSnackBarConfig } from "@angular/material";
 import * as jsonPath from 'jsonpath/jsonpath';
-import {TemplateService} from "../../template-library/services/com.service";
-import {ModalService} from "../../template-library/modal-step/modal.service";
-import {RateplanModalComponent } from '../rate-plan-modal/rateplan-modal.component';
+import { TemplateService } from "../../template-library/services/com.service";
+import { ModalService } from "../../template-library/modal-step/modal.service";
+import { RateplanModalComponent } from '../rate-plan-modal/rateplan-modal.component';
 
 @Component(
     {
@@ -13,46 +13,48 @@ import {RateplanModalComponent } from '../rate-plan-modal/rateplan-modal.compone
         styleUrls: ['./product-details.scss']
     }
 )
-export class ProductDetailsComponent implements OnChanges{
+export class ProductDetailsComponent implements OnChanges {
 
-    @Input() rootNode:any;
-    @Input() config:any;
-    @Input() data:any;
-    @Input() active:boolean = false;
-    @Input() details:any;
+    @Input() rootNode: any;
+    @Input() config: any;
+    @Input() data: any;
+    @Input() active: boolean = false;
+    @Input() details: any;
 
-    basketArr:Array<any>=[];
-    choiceVariant:any={};
-    choiceColor:any={};
-    selection:any={};
+    basketArr: Array<any> = [];
+    choiceVariant: any = {};
+    choiceColor: any = {};
+    selection: any = {};
+    availableQty: any;
+    imageDisp: string;
+    variantChoice: string;
 
-    imageDisp:string;
-    variantChoice:string;
+    imgPosition: number = 0;
+    variantPosition: number = 0;
 
-    imgPosition:number=0;
-    variantPosition:number=0;
+    price: string;
 
-    price:string;
-
-    options:Array<any> = [1, 2, 3, 4, 5];
-    ratePlan:any = null;
-    carrierList:Array<any>=[];
+    options: Array<any> = [1, 2, 3, 4, 5];
+    ratePlan: any = null;
+    carrierList: Array<any> = [];
 
     constructor(
-        protected productService : ProductService,
+        protected productService: ProductService,
         public snackBar1: MatSnackBar,
-        public tempService:TemplateService,
-        public modalService : ModalService
-    ){}
+        public tempService: TemplateService,
+        public modalService: ModalService
+    ) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['details'] && changes['details'].currentValue != null){
+        this.scrollUp();
+        if (changes['details'] && changes['details'].currentValue != null) {
             this.details = changes['details'].currentValue;
+            console.log(this.details)
             this.details.quantity = 1;
 
             this.ratePlan = null;
 
-            if(!this.active){
+            if (!this.active) {
                 this.active = true;
             }
 
@@ -60,105 +62,122 @@ export class ProductDetailsComponent implements OnChanges{
             this.imgPosition = 0;
             this.selectColor();
             this.choiceVariant = {};
-            this.variantPosition=0;
+            this.variantPosition = 0;
             this.selectVariant();
 
             this.price = this.details.price;
 
-            this.carrierList = this.getCarrierList();
+            // this.carrierList = this.getCarrierList();
         }
     }
 
-    private getCarrierList():Array<any>{
-        let carrier:Array<any> = [];
+    private getCarrierList(): Array<any> {
+        let carrier: Array<any> = [];
         this.data = this.rootNode.getValue();
         let resNode = this.rootNode.findNode('ProductCatalogResponse');
         let productRes = resNode.getValue();
         let filterNode = this.rootNode.findNode('ProductCatalogResponse.Filters');
 
-        if(this.data && productRes){
+        if (this.data && productRes) {
             let filters = filterNode.getValue();
-            if(filters && this.details && this.details.partnerid){
-                carrier = jsonPath.query(filters, "$..FilterList[?(@.filterID =="+ this.details.partnerid+" && @.filterType == 'partnerid')]");
+            if (filters && this.details && this.details.partnerid) {
+                carrier = jsonPath.query(filters, "$..FilterList[?(@.filterID ==" + this.details.partnerid + " && @.filterType == 'partnerid')]");
             }
         }
-        if(carrier.length > 0)
+        if (carrier.length > 0)
             this.details.carrier = carrier[0];
 
         return carrier;
     }
 
-    public closeDetails(){
-        if(this.active){
+    public closeDetails() {
+        if (this.active) {
             this.active = false;
         }
     }
 
-    private getFirstChoice(type:string):any{
-        if(this.details && this.details.customizations){
-            for(let custom of this.details.customizations){
-                if(custom.title === type){
-                    for(let choice of custom.choices){
-                        return choice;
-                    }
+
+    public getImage(url) {
+        let re = new RegExp("^(http|https)://", "i");
+        if (re.test(url)) {
+            return url;
+        } else {
+            return this.config.cmsUrl + url;
+        }
+    }
+
+
+    private getFirstChoice(type: string): any {
+        if (this.details && this.details.features.CUSTOMIZATIONS.CHOICES) {
+            for (let custom of this.details.features.CUSTOMIZATIONS.CHOICES) {
+                if (custom.name === type) {
+                    return custom;
+
                 }
             }
         }
         return "";
     }
 
-    protected selectColor(choice?:any, position?:number){
-        if(choice){
+    protected selectColor(choice?: any, position?: number) {
+        this.scrollUp();
+        this.details.quantity = 1;
+        if (choice) {
             this.choiceColor = choice;
             this.imgPosition = position;
-            this.imageDisp = this.config.cmsUrl + choice.choiceImage;
-            this.selection = choice.selection;
+            this.imageDisp = choice.image[0].path;
+            this.selection = choice.colorvalue;
+            this.price = choice.price;
+            this.availableQty = parseInt(choice.choiceavailableqty);
         } else {
             let firstChoice = this.getFirstChoice('Color');
-            this.imageDisp = this.config.cmsUrl + firstChoice.choiceImage;
+            this.imageDisp = firstChoice.image[0].path;
             this.choiceColor = firstChoice;
-            this.selection = firstChoice.selection;
+            this.selection = firstChoice.colorvalue;
+            this.price = firstChoice.price;
+            this.availableQty = parseInt(firstChoice.choiceavailableqty);
         }
     }
 
-    protected selectVariant(choice?:any, position?:number){
-        if(choice){
+    protected selectVariant(choice?: any, position?: number) {
+        if (choice) {
             this.choiceVariant = choice;
             this.variantPosition = position;
             this.variantChoice = choice.selection;
-            if(choice.choicePrice){
+            if (choice.choicePrice) {
                 this.price = choice.choicePrice;
             }
         } else {
-            let firstChoice= this.getFirstChoice('Variant');
-            if(firstChoice){
+            let firstChoice = this.getFirstChoice('Variant');
+            if (firstChoice) {
                 this.variantChoice = firstChoice.selection;
                 this.choiceVariant = firstChoice;
             }
         }
     }
 
-    protected addToBasket(product:any){
-        if(product){
-            if(this.choiceColor && this.choiceColor.choiceColor){
-                product.color = this.choiceColor.choiceColor;
-                product.image = this.choiceColor.choiceImage;
-                product.selection = this.choiceColor.selection;
+    protected addToBasket(product: any) {
+        if (product) {
+            if (this.choiceColor && this.choiceColor.colorcode) {
+                product.color = this.choiceColor.colorcode;
+                product.image = this.choiceColor.image[0].path;
+                product.selection = this.choiceColor.colorvalue;
+                product.availableQty = parseInt(this.choiceColor.choiceavailableqty);
             }
-            if(this.choiceVariant && this.choiceVariant.selection){
+            if (this.choiceVariant && this.choiceVariant.selection) {
                 product.price = this.choiceVariant.choicePrice;
                 product.variant = this.choiceVariant.selection;
             }
-            if(this.ratePlan){
+            if (this.ratePlan) {
                 let plan = this.ratePlan.data;
-                product.ratePlan ={
+                product.ratePlan = {
                     planPackageName: plan.packageName,
                     planOnetimePrice: plan.onetimePrice,
                     planMonthlyPrice: plan.monthlyPrice,
                     featuresList: plan.features
                 };
             }
-            if(product.carrier && product.carrier.filterTitle){
+            if (product.carrier && product.carrier.filterTitle) {
                 product.carrierName = product.carrier.filterTitle;
             }
 
@@ -171,33 +190,33 @@ export class ProductDetailsComponent implements OnChanges{
             this.snackBar1.open("Added to Cart", '', config);
             this.productService.setProductList(this.basketArr);
 
-            let resp = {type:'cart', data:this.getTotalProducts()};
+            let resp = { type: 'cart', data: this.getTotalProducts() };
             this.tempService.setInfo(resp);
 
             if (this.active) {
-            this.active = false;
-          }
+                this.active = false;
+            }
 
         }
     }
 
-    private getTotalProducts(){
+    private getTotalProducts() {
         let total = 0;
         this.productService.getProductList().forEach(product => {
-           total += product.itemQuantity;
+            total += product.itemQuantity;
         });
         return total;
     }
 
     private createBasket(product: any) {
         let data = {};
-        for(let field of this.config.fields){
+        for (let field of this.config.setFields) {
             data[field.setVal] = product[field.getVal];
         }
         let selectedIndex;
         let selectedItems = this.basketArr.filter((item, i) => {
             selectedIndex = i;
-            for (let field of this.config.fields) {
+            for (let field of this.config.setFields) {
                 if (field.setVal !== 'itemQuantity')
                     if (item[field.setVal] !== data[field.setVal]) {
                         return false;
@@ -210,7 +229,7 @@ export class ProductDetailsComponent implements OnChanges{
 
     }
 
-    public openRatePlan(){
+    public openRatePlan() {
         this.modalService.openCustomModal(
             {
                 cancelLabel: 'No',
@@ -218,7 +237,7 @@ export class ProductDetailsComponent implements OnChanges{
                 message: 'Do you wish to clear your saved data?',
                 title: 'Restart Session',
                 data: this.data,
-                id:this.details.partnerid,
+                id: this.details.partnerid,
                 width: '60vw'
             }, RateplanModalComponent).afterClosed().subscribe((result) => {
                 if (result) {
@@ -228,6 +247,9 @@ export class ProductDetailsComponent implements OnChanges{
                 }
             }
             );
+    }
+    scrollUp() {
+        document.getElementById('product-detail').scrollTop = 0;
     }
 
     /*private removeDuplicates(list: any, key:string) {

@@ -1,0 +1,16 @@
+<section class="devices-list" *ngIf="sortedList">
+        <label for="input1" class="font-strong font-size-18">{{config.subTitle}}: <span *ngIf="selected" class="font-normal">{{selected.length
+                > 4 ? (selected | titlecase):(selected | uppercase)}}</span></label>
+      
+        <div class="d-flex" *ngFor="let tiles of sortedList">
+        <div class="d-flex flex-wrap mt-20" *ngFor="let tile of tiles">
+            <div (click)="selected = tile.storeName; onsubmit(tile)" [class]="(selected == tile.storeName)?'device-item active':'device-item'">
+                <img [src]="config.cmsUrl + tile.imageurl" />
+            </div>
+        </div>
+      </div>
+      <button class="dxp_Btn btn-primary" (click)="setPim()"
+      [disabled]="!(selected)">{{config.submitLabel}}</button>
+</section>
+      
+      

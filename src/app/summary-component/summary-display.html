@@ -102,7 +102,7 @@
                 <!--TODO
             display dynamically-->
                 <!-- <section *ngIf="!data.CommonFields.Authentication.isFlowCheck"> -->
-                <section *ngIf="dataType === 'market' || dataType === 'wireless'">
+                <section *ngIf="dataType === 'retail' || dataType === 'wireless'">
                     <div class="billing-details">
                         <div class="billing-row d-flex column-2-big" *ngFor="let item of selectedItems">
                             <div class="imageColumn"><img src="{{config.cmsUrl}}{{item.itemImage}}" width="56"/></div>

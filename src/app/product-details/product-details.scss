@@ -1,7 +1,11 @@
 @import "variables";
 
 $primary: map-get($sncr-app-theme, primary);
-
+.availablequantity{
+    padding: 10px 0px;
+    color: green;
+    font-weight: bold;
+}
 .product-details{
     height: calc(100% - 60px);
     position: fixed;

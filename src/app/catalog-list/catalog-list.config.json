@@ -1,0 +1,92 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "selectedNode": {
+            "title": "Set Selected Object - Node Array Name",
+            "type": "string"
+        },
+        "cmsUrl": {
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "getObject": {
+                        "title": "Get Value From",
+                        "type": "string"
+                    },
+                    "GetProperties": {
+                        "items": {
+                            "properties": {
+                                "getProperty": {
+                                    "title": "get Above Value to Key",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "getProperty"
+                            ],
+                            "title": "GetProperty",
+                            "type": "object"
+                        },
+                        "title": "GetProperties",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "keyName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        },
+        "setFields": {
+            "items": {
+                "properties": {
+                    "getVal": {
+                        "title": "Get Value From",
+                        "type": "string"
+                    },
+                    "setVal": {
+                        "title": "Set Above Value to Key",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "keyName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "SetFields",
+            "type": "array"
+        }
+    },
+    "title": "CatalogList",
+    "type": "object"
+}

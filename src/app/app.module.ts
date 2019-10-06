@@ -46,6 +46,9 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import {PartnerXTheme} from "./app-theme/PartnerX-theme";
 import {FrontierTheme} from "./app-theme/Frontier-theme";
 import { PhoneNumberFormatPipe } from 'src/template-library/pipes/phone-number.pipe';
+import { CatalogListComponent } from './catalog-list/catalog-list.component';
+import { RetailListComponent } from './retail-list/retail-list.component';
+
 
 @NgModule({
   imports: [
@@ -93,7 +96,9 @@ import { PhoneNumberFormatPipe } from 'src/template-library/pipes/phone-number.p
     BillingDetailsComponent,
     RateplanModalComponent,
     DeviceSelectionComponent,
-    PhoneNumberFormatPipe
+    PhoneNumberFormatPipe,
+    CatalogListComponent,
+    RetailListComponent
   ],
   providers: [
     {
@@ -159,7 +164,9 @@ import { PhoneNumberFormatPipe } from 'src/template-library/pipes/phone-number.p
         tradeinConfirm: TradeInConfirmComponent,
         shoppingCart: ShoppingCartComponent,
         deviceDataInput: DeviceDataInputComponent,
-        deviceSelection: DeviceSelectionComponent,
+        deviceSelection:DeviceSelectionComponent,
+        CatalogList:CatalogListComponent,
+        retailList:RetailListComponent,
       }
     },
     ProductService,
@@ -189,7 +196,9 @@ import { PhoneNumberFormatPipe } from 'src/template-library/pipes/phone-number.p
     BillingDetailsComponent,
     RateplanModalComponent,
     DeviceSelectionComponent,
-  ]
+    CatalogListComponent,
+    RetailListComponent
+    ]
 })
 
 export class AppModule {

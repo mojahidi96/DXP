@@ -69,18 +69,18 @@ export class SummaryComponent extends StepComponentAbstract implements OnInit, A
         this.dispTransactionDetail();
     }
 
-    @HostListener('document:visibilitychange')
-    onUnload() {
-    // Since isContentRequired is only true on Order confirmation
-     if(this.config.isContentRequired.toLowerCase() === 'yes'){
-        const abandoned = this.rootNode.findNode('CommonFields.abandoned');
+    // @HostListener('document:visibilitychange')
+    // onUnload() {
+    // // Since isContentRequired is only true on Order confirmation
+    //  if(this.config.isContentRequired.toLowerCase() === 'yes'){
+    //     const abandoned = this.rootNode.findNode('CommonFields.abandoned');
 
-        if (abandoned) {
-            abandoned.setValue(true);
-        }
-        this.placeOrder();
-        }
-    }
+    //     if (abandoned) {
+    //         abandoned.setValue(true);
+    //     }
+    //     this.placeOrder();
+    //     }
+    // }
 
     private setInstallType() {
       let nodeInstall = this.rootNode.findNode('CommonFields.InstallTypes').getValue();

@@ -91,6 +91,7 @@ export class SalesHeaderComponent implements OnInit {
      {id : "1008", appUrl: "https://app-engine-1008-sales.dxpdesign.dev.cloud.synchronoss.net/api"},
      {id : "1009", appUrl: "https://app-engine-1009-sales.dxpdesign.dev.cloud.synchronoss.net/api"},
      {id : "1010", appUrl: "https://app-engine-1010-sales.dxpdesign.dev.cloud.synchronoss.net/api"},
+     {id : "1019", appUrl: "https://app-engine-1019-dev.dxpdesign.dev.cloud.synchronoss.net/api"}
 
     ];
 
@@ -163,7 +164,7 @@ export class SalesHeaderComponent implements OnInit {
   }
 
   getHeadings(route) {
-    return route === 'market' ? 'marketplace' : route === 'tradein' ? 'trade-in' : route;
+    return route === 'market' ? 'Retail' : route === 'tradein' ? 'trade-in' : route;
   }
 
   public routeToFeature(channel: string): void {

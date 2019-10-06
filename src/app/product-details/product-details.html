@@ -1,7 +1,7 @@
-<div class="product-details" [ngClass]="{'open': active}">
+<div class="product-details" [ngClass]="{'open': active}" id="product-detail">
     <ng-container *ngIf="details">
     <div class="product-name">
-        {{details.productName}}
+        {{details.name | titlecase}}
         <div class="close">
             <button mat-button (click)="closeDetails()"><i class="x"></i></button>
         </div>
@@ -10,16 +10,16 @@
     <!--<p class="drag-zoom">Drag to zoom</p>-->
 
     <div class="product-image text-center">
-        <img [src]="imageDisp" class="img-fluid"/>
+        <img [src]="getImage(imageDisp)" class="img-fluid"/>
         <!--<a href="#" class="play-btn"><img src="../../assets/play.png" /></a>-->
     </div>
 
-    <ng-container *ngFor="let custom  of details.customizations">
-        <ng-container *ngIf="custom.title === 'Color'">
+    <ng-container *ngFor="let custom  of details.features.CUSTOMIZATIONS">
+        <ng-container *ngIf="custom.name === 'Color'">
                 <p class="selection-title"><span class="font-strong">Color:</span> {{selection}}</p>
             <div class="selection-box d-flex flex-wrap">
-                <ng-container *ngFor="let choice of custom.choices; let i = index">
-                    <div class="selection-item" [class.active]="imgPosition === i" [ngStyle]="{'background-color': choice.choiceColor}"  (click)="selectColor(choice, i)"></div>
+                <ng-container *ngFor="let custom  of details.features.CUSTOMIZATIONS.CHOICES; let i = index">
+                    <div class="selection-item" [class.active]="imgPosition === i" [ngStyle]="{'background-color': custom.colorcode}"  (click)="selectColor(custom, i)"></div>
                 </ng-container>
             </div>
         </ng-container>
@@ -59,16 +59,16 @@
             </a>
         </p>
     </ng-container>
-
+    <!-- <div class="d-flex availablequantity">Available quantity {{availableQty}} in stock</div> -->
     <div class="mt-30">
         <h3 class="device-price font-strong">{{price | currency:data?.CommonFields?.CurrencyType:'symbol'}}</h3><!--<sup class="font-normal">00</sup>-->
     </div>
-
+    
     <div class="add-to-cart d-flex">
         <div class="quantity">
             <mat-form-field appearance="outline">
                 <mat-select [(value)]="details.quantity" required>
-                    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                    <mat-option *ngFor="let option of options" [disabled]="(option > availableQty)?true:false" [value]="option">{{option}}</mat-option>
                 </mat-select>
                 <!--<mat-select [(ngModel)]="details.quantity">
                     <mat-option *ngFor="let option of options">{{option}}</mat-option>
@@ -76,18 +76,18 @@
             </mat-form-field>
         </div>
         <div class="add-to-card-button">
-            <button class="dxp_Btn btn-primary" (click)="addToBasket(details)">Add to basket</button>
+            <button class="dxp_Btn btn-primary" insights [rootNode]="rootNode" (click)="addToBasket(details)">Add to basket</button>
         </div>
     </div>
 
     <div class="mt-30">
         <mat-accordion>
-            <ng-container *ngFor="let feature  of details.features; let k = index">
+            <ng-container *ngFor="let feature  of details.features.FEATURES; let k = index">
                 <mat-expansion-panel [expanded]="k == 0 ? true: false" >
                     <mat-expansion-panel-header>
-                        {{feature.featureName}}
+                        {{feature.name}}
                     </mat-expansion-panel-header>
-                    {{feature.featureDesc}}
+                    {{feature.description}}
                 </mat-expansion-panel>
             </ng-container>
         </mat-accordion>

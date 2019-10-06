@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col1"><img src="{{config.cmsUrl}}{{item.itemImage}}" class="img-fluid" /></div>
                     <div class="col2">
-                        <span>{{item.itemName}} {{item.itemColorLabel}} {{item.itemVariant}}</span>
+                        <span>{{item.itemName | titlecase}} {{item.itemColorLabel| titlecase}} {{item.itemVariant| titlecase}}</span>
                         <br/>
                         <span *ngIf="item.ratePlan">
                             <b>Plan:</b> {{item.ratePlan.planPackageName}} /mo
@@ -16,7 +16,7 @@
                         <div class="form-input stateDiv">
                             <mat-form-field appearance="outline">
                                 <mat-select [(value)]="item.itemQuantity"  required>
-                                    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                                    <mat-option *ngFor="let option of options" [disabled]="(option > item.availableItemQty)?true:false" [value]="option">{{option}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
