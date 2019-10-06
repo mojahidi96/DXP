@@ -1,0 +1,261 @@
+@import "variables";
+
+$primary: map-get($sncr-app-theme, primary);
+.search-tags-tablet{
+	overflow: auto;
+
+	ul{
+		margin: 6px 0px 0px;
+		padding: 0px;
+		width: 150%;
+
+		li{
+			list-style: none;
+			float: left;
+			  opacity: 0.8;
+			  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+			  border: solid 2px transparent;
+			  background-color: #eaeaea;
+			  font-size: 14px;
+			  margin-right: 10px;
+			  margin-bottom: 10px;
+			  padding: 10px;
+		}
+	}
+}
+
+.selected{
+	background-color: #ffffff !important;
+	border: solid 2px #0077be !important;
+}
+.selection-tags{
+	ul{
+		margin: 0px;
+		padding: 0px;
+
+		li{
+			list-style: none;
+			float: left;
+			  opacity: 0.8;
+			  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+			  background-color: #eaeaea;
+			  font-size: 14px;
+			  margin-right: 10px;
+			  margin-bottom: 10px;
+			  padding: 10px;
+			  min-width: 100px;
+			  text-align: center;
+			  position: relative;
+
+			  .color-tag{
+				display: inline-block;
+				min-width: 40px;
+				min-height: 100%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+
+				&.color-black{
+					background-color: #000;
+				}
+
+				&.color-white{
+					background-color: #fff;
+				}
+
+				&.color-rose{
+					background-color: #e1a9b0;
+				}
+
+				&.color-gold{
+					background-color: #c0cb09;
+				}
+
+			  }
+		}
+
+		&.colors{
+			li{
+				padding-left: 40px;
+			}
+		}
+
+	}
+}
+
+.service-selection{
+	margin-top: 40px;
+
+	.service-box{
+		background-color: #f5f9fc;
+		border: 1px solid #d7eafa;
+		min-width: 150px;
+		text-align: center;
+		padding: 30px;
+		margin-right: 30px;
+		position: relative;
+
+		button{
+			/*position: absolute;
+			bottom: -15px;
+			transform: translate(-50%);*/
+			background: #fff;
+			border-color: #0077be;
+		}
+
+		h5{
+			color: #0077be;
+			margin: 0px 0px 20px 0px;
+		}
+
+		&.selected{
+			background-color: #0077be;
+
+			button{
+				text-indent: -9999px;
+				background-size: 30%;
+			}
+
+			h5{
+				color: #fff;
+			}
+
+		}
+
+	}
+}
+
+
+.trade-value{
+	h3{
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	.trade-price{
+		font-size: 26px;
+		.price{
+			font-size: 80px;
+			line-height: 80px;
+			padding: 0px 5px;
+		}
+	}
+}
+.filter-icon{
+	display: inline-block;
+	width: 21px;
+	margin-left:10px;
+	top: 4px;
+	position: relative;
+	cursor: pointer;
+	.popover__content {
+	  opacity: 10;
+	  visibility: hidden;
+	  position: absolute;
+	  top: -130px;
+      left: -105px;
+	  transform: translate(0, 10px);
+	  background: #f5f9fc;
+	  border: 1px solid #c4e7f6;
+	  font-size: 10px;
+	  padding: 12px;
+	  width: 211px;
+	&:after,
+	&:before {
+	 top: 100%;
+	 left: 50%;
+	 border: solid transparent;
+	 content: " ";
+	 height: 0;
+	 width: 0;
+	 position: absolute;
+	 pointer-events: none;
+}
+		&:after {
+			border-color: rgba(245, 249, 252, 0);
+			border-top-color: #f5f9fc;
+			border-width: 7px;
+			margin-left: -10px;
+		}
+			&:before {
+			border-color: rgba(196, 231, 246, 0);
+			border-top-color: #c4e7f6;
+			border-width: 8px;
+			margin-left: -11px;
+		}
+
+
+	}
+
+
+	.popover__title {
+	  font-size: 24px;
+	  line-height: 36px;
+	  text-decoration: none;
+	  color: rgb(228, 68, 68);
+	  text-align: center;
+	  padding: 15px 0;
+	}
+}
+
+.filter-icon:hover .popover__content {
+	  z-index: 10;
+	  opacity: 1;
+	  visibility: visible;
+	  transform: translate(0, -20px);
+	  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+	}
+
+
+
+.popover__message {
+  text-align: left;
+}
+
+.tooltip__img{
+		height: 13px;
+		width: 13px;
+}
+.photo-margin{
+	width: max-content;
+    margin-right: 175px;
+}
+.fit_content{
+	width: fit-content !important;
+  }
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .pt-tablet-0{
+	padding-top: 0px !important;
+  }
+
+
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+
+}
+
+
+
+@media only screen and (max-width: 500px)  {
+	.service-selection{
+		display: block !important;
+
+		.service-box{
+			margin-bottom: 50px;
+		}
+	}
+
+}

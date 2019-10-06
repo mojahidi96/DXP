@@ -1,0 +1,42 @@
+<ng-container *ngIf="!node.schema.enum; else enum">
+  <!-- Note that required is set against minLength > 0 to comply with -->
+  <!-- JSON Schema validation where required allows an empty string -->
+  <div class="dxp-form-group" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+    <label>
+      <div class="dxp-label">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span>
+      </div>
+      <input
+        [(ngModel)]="node.value"
+        [lumenValidateNode]="node"
+        [id]="node.fullName"
+        [max]="node.schema.maximum"
+        [min]="node.schema.minimum"
+        [name]="node.fullName"
+        [placeholder]="node.title | lumenTranslate"
+        [required]="node.schema.minLength > 0"
+        [type]="type"
+        [disabled]="node.readOnly"
+        #field="ngModel"
+        class="dxp-form-control"
+      >
+      <em
+        *ngIf="node.error && field.invalid && field.dirty && field.touched">{{ node.validationMessage | lumenTranslate }}</em>
+    </label>
+  </div>
+</ng-container>
+<ng-template #enum>
+  <div class="dxp-select-group" [ngClass]="{'has-error':model.invalid && model.dirty && model.touched}">
+    <ng-select
+      [lumenValidateNode]="node"
+      [disabled]="node.readOnly"
+      [(ngModel)]="node.value"
+      [items]="node.schema.enum"
+      [placeholder]="node.title | lumenTranslate"
+      [required]="node.required"
+      #model="ngModel"
+      class="ui-select-container"
+    >
+    </ng-select>
+    <em *ngIf="model.invalid && model.dirty && model.touched">{{ node.validationMessage | lumenTranslate }}</em>
+  </div>
+</ng-template>

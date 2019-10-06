@@ -1,0 +1,9 @@
+<h1 *ngIf="config.title">{{ config.title | lumenTranslate }}</h1>
+
+<mat-tab-group>
+    <ng-container *ngFor="let field of config.fields">
+        <mat-tab  label="{{field.tab}}" >
+            <uiconfig-node [config]="field" [node]="rootNode"></uiconfig-node>
+        </mat-tab>
+    </ng-container>
+</mat-tab-group>

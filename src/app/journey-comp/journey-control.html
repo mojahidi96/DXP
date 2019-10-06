@@ -1,0 +1,17 @@
+<ng-container [ngSwitch]="state">
+  <lumen-step-outlet
+    (bpe)="displayBPE($event)"
+    (done)="complete($event)"
+    (error)="throwError($event)"
+    instantiatePilot="linear"
+    *ngSwitchCase="'flow'"
+  ></lumen-step-outlet>
+  <div *ngSwitchCase="'done'">
+    <h1>Done</h1>
+    <button (click)="state = 'flow'">Restart Journey</button>
+  </div>
+  <div *ngSwitchCase="'error'">
+    <h1>An error occurred.</h1>
+    <button (click)="state = 'flow'">Restart Journey</button>
+  </div>
+</ng-container>

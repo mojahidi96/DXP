@@ -1,0 +1,23 @@
+
+
+<div class="dxp-form-group" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+    <label><div class="dxp-label">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span></div>
+
+    <input
+           [id]="node.fullName"
+           [ngModel]="node.value"
+           [value]="phone"
+           [lumenValidateNode]="node"
+           [placeholder]="node.title | lumenTranslate"
+           [required]="node.required"
+           [disabled]="node.readOnly"
+           (keyup)="setPhoneNumber($event)"
+           oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+           #field="ngModel"
+           class="dxp-form-control"
+         >
+         <em *ngIf="node.error && field.invalid && field.dirty && field.touched">{{ node.validationMessage | lumenTranslate }}</em>
+
+</label>
+</div>
+

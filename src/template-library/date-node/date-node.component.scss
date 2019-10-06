@@ -1,0 +1,33 @@
+:host {
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+  margin: 1rem 0;
+    display: block;
+}
+
+.uitDateTimeNode {
+    display: block;
+}
+
+.ico-calendar{
+    width: 23px;
+    height: 22px;
+    background-image:url(images/calendar.png);
+    background-size: 23px auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+    cursor:pointer;
+    }
+
+
+:host::ng-deep .calendarForm{
+    .mat-form-field-infix{
+        .trigger{
+            float: right;
+            position: absolute;
+            right: 8px;
+            top:15px;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<mat-radio-group [(ngModel)]="selectedRadio" [lumenValidateNode]="node">
+  <div class="mb-15" *ngFor="let nodeItem of radioList">
+    <mat-radio-button (change)="setValue(nodeItem)" [value]="nodeItem.label" color="primary">
+      {{nodeItem.label}}
+    </mat-radio-button>
+    <p *ngIf="nodeItem.label==selectedRadio && nodeItem.type != 'selectBox'" [innerHtml]="nodeItem.contentHtml"></p>
+    <div *ngIf="nodeItem.label==selectedRadio && nodeItem.type=='selectBox'" class='radio-content'>
+      <ul class='payment-card'>
+        <li *ngFor="let content of nodeItem.contentHtml" (click)="selectedGetPaid = content" class="mr-20"
+          [class.active]="selectedGetPaid == content">
+          <span [innerHtml]="content"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-radio-group>

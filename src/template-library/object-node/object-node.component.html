@@ -1,0 +1,5 @@
+<ng-container *ngIf="nodes.length">
+    <ng-container *ngFor="let nodeName of nodes">
+        <lumen-node [node]="node.children[nodeName]"></lumen-node>
+    </ng-container>
+</ng-container>

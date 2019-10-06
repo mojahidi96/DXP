@@ -1,0 +1,422 @@
+@import 'variables';
+
+.dashboard-main {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  .productList {
+    background: #ebf7fc;
+    .d-flex {
+      width: 100%;
+      justify-content: center;
+      .box-column {
+        padding: 20px 35px 20px 35px;
+        img {
+          width: 72px;
+          height: auto;
+          vertical-align: middle;
+        }
+        a {
+          text-decoration: none;
+          span {
+            margin-left: 20px;
+            font-weight: bold;
+          }
+        }
+        &:last-child {
+          padding-right: 0px;
+        }
+      }
+    }
+
+  }
+  .minHeight250 {
+    min-height: 250px;
+  }
+  .mt-77px {
+    margin-top: 77px;
+  }
+  .mt-36 {
+    margin-top: 37px !important;
+  }
+  .customBtnGrey {
+    min-width: 300px;
+    height: 60px;
+    border-radius: 2px;
+    box-shadow: inset -1px 1px 0 0 rgba(255, 255, 255, 0);
+    border: solid 1px rgba(0, 0, 0, 0.05);
+    background-color: #454545;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 74px;
+  }
+
+  .customBtnWhite {
+    min-width: 300px;
+    height: 60px;
+    border-radius: 2px;
+    box-shadow: inset -1px 1px 0 0 rgba(255, 255, 255, 0);
+    border: solid 1px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    color: #21588a;
+    margin-top: 74px;
+  }
+
+  .section-jc {
+    background: url("../../assets/images/dashboard/background-1@2x.png") no-repeat 0 0;
+    background-size: cover;
+    width: 100%;
+    height: 585px;
+    .contentJC {
+      padding: 108px 20px 0px 131px;
+      width: 800px;
+      h1 {
+        color: #ffffff;
+        font-size: 40px;
+        margin-bottom: 61px;
+      }
+      p {
+        color: #ffffff;
+        font-size: 24px;
+        margin-bottom: 74px;
+      }
+    }
+  }
+
+  .cleverIntegration {
+    background: url("../../assets/images/dashboard/background-3@2x.png") no-repeat 0 0;
+    background-size: cover;
+    width: 100%;
+    height: 585px;
+    .box-column {
+      width: 42%;
+      right: 0px;
+      position: absolute;
+      h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #454545;
+        margin-bottom: 44px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #454545;
+        width: 86%;
+        line-height: 1.67;
+      }
+    }
+
+  }
+  .productsSection {
+    background: url("../../assets/images/dashboard/background-5@2x.png") #090504 no-repeat 0px 0px;
+    background-size: cover;
+    width: 100%;
+    height: 585px;
+    padding-bottom: 50px;
+    .box-column {
+      padding: 0px;
+      margin-right: 66px;
+      margin-top: 103px;
+      &:first-child {
+        margin-left: 63px;
+      }
+      .bgWhite {
+        background-color: #ffffff;
+        max-width: 280px;
+        padding-bottom: 35px;
+        min-height: 435px;
+        text-align: left;
+        position: relative;
+        a {
+          img {
+            max-width: 280px;
+            max-height: 200px;
+          }
+          &.arrow {
+            margin-left: 20px;
+            position: absolute;
+            bottom: 10px;
+            img {
+              width: 28px;
+              height: auto;
+            }
+          }
+        }
+        h3 {
+          font-size: 24px;
+          font-weight: bold;
+          color: #454545;
+          text-align: left;
+          padding: 0px 20px;
+          margin: 10px 0px;
+        }
+        p {
+          font-size: 14px;
+          font-weight: normal;
+          line-height: 2.14;
+          letter-spacing: -0.5px;
+          color: #454545;
+          padding: 0px 10px 0px 20px;
+        }
+
+      }
+    }
+  }
+  .omniChannel {
+    background: url("../../assets/images/dashboard/image-1@2x.png") no-repeat 100% 0;
+    background-size: contain;
+    width: 100%;
+    height: 491px;
+    .box-column {
+      width: 50%;
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #454545;
+        text-align: right;
+        margin-right: 78px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #454545;
+        text-align: right;
+        margin-right: 78px;
+      }
+
+    }
+  }
+  .simplifiedImp {
+    background: url("../../assets/images/dashboard/background-6@2x.png") no-repeat 0 0;
+    background-size: cover;
+    width: 100%;
+    height: 585px;
+    .box-column {
+      width: 40%;
+      position: absolute;
+      right: 20px;
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: left;
+        margin-right: 78px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #ffffff;
+        text-align: left;
+        margin-right: 78px;
+      }
+
+    }
+  }
+
+  .digitalExpSec {
+    .col1 {
+      width: 50%;
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #454545;
+        text-align: right;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #454545;
+        text-align: right;
+        line-height: 1.67;
+      }
+    }
+
+    .col2 {
+      width: 50%;
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #454545;
+        text-align: left;
+        margin-right: 78px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #454545;
+        text-align: left;
+        margin-right: 78px;
+        line-height: 1.67;
+      }
+    }
+
+  }
+
+  .journeyAnalytics {
+    background: url("../../assets/images/dashboard/background-7@2x.png") no-repeat 0 0;
+    background-size: cover;
+    width: 100%;
+    height: 585px;
+    .box-column {
+      width: 40%;
+      position: absolute;
+      right: 20px;
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: left;
+        margin-right: 78px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: normal;
+        color: #ffffff;
+        text-align: left;
+        margin-right: 78px;
+      }
+
+    }
+
+  }
+
+}
+
+.marR-90 {
+  margin-right: 76px;
+}
+
+.brand-name {
+  font-size: 24px;
+  border-left: 1px solid #979797;
+  padding-left: 15px;
+  margin-left: 10px;
+}
+
+.dashboard-footer {
+  margin-top: 20px;
+}
+
+.content-area {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  padding: 40px 0px;
+  margin-bottom: 20px;
+}
+
+.box-column {
+  padding: 50px;
+  h5 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+footer {
+  color: #727272;
+  font-size: 12px;
+}
+
+.menuSlider {
+  height: calc(100% - 0px);
+  position: fixed;
+  left: -325px;
+  top: 0px;
+  color: mat-color($primary, 800);
+  overflow: auto;
+  background: mat-color($primary, A100);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+  padding: 15px;
+  width: 175px;
+  max-width: calc(225px - 0px);
+  transition: left 200ms ease-in-out;
+  transform: translateZ(0);
+
+  &.open {
+    left: 0px;
+  }
+  .icons {
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: left;
+  }
+  .titleText {
+    font-size: 13px;
+    display: inline;
+    top: 38px;
+    position: relative;
+    left: 10px;
+  }
+  .top16 {
+    top: 16px;
+  }
+
+  a {
+    color: mat-color($primary, 800);
+    text-decoration: none;
+  }
+  .marT-50 {
+    margin-top: 50px;
+  }
+  .marT-30 {
+    margin-top: 30px;
+  }
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    button {
+      margin: 0px;
+      padding: 5px;
+      min-width: auto;
+      line-height: normal;
+      font-size: 24px;
+    }
+  }
+}
+.pointer{
+  cursor: pointer;
+}
+@media only screen and (max-width: 1024px) {
+  .d-flex.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+
+  /deep/ .app-container {
+  grid-template-areas: "header header"
+                        "main sidebar"
+                        "footer sidebar";
+}
+
+//  /deep/ .app-header {
+//
+//  .mat-select {
+//    color: #ffffff;
+//
+//    .mat-select-value,
+//    .mat-select-arrow,
+//    .mat-form-field-label {
+//      color: var(--bodyBGColor) !important;
+//    }
+//  }
+//
+//  .mat-form-field-appearance-legacy .mat-form-field-label {
+//    color: var(--bodyBGColor)  !important;
+//  }
+//
+//  .mat-form-field-appearance-legacy .mat-form-field-underline {
+//    background-color:  var(--bodyBGColor) ;
+//  }
+//
+//}

@@ -1,0 +1,12 @@
+
+<div class="p-30 pt-tablet-0">
+  <section class="form-section" *ngIf="components">
+    <ng-container *ngFor="let component of components">
+      <uiconfig-node [config]="component" [loadComponent]="component.componentName" [node]="rootNode" [data]="data">
+      </uiconfig-node>
+    </ng-container>
+  </section>
+  <div class="marT10 marB20">
+    <button  *ngIf="config.submitLabel" class="dxp_Btn btn-primary" type="submit"  (click)="onSubmit()">{{config.submitLabel}}</button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<section>
+    <ui-carousel #uislider class="devices-carousel slider variable-width slick-initialized slick-slider slick-dotted"
+        [infinite]="false" [dots]="true" slidesToScroll="4" height="320px" speed="3000" autoplay="false">
+        <ui-carousel-item *ngFor="let carousel of refineDeviceList">
+            <div class="devices-items d-flex justify-content-center">
+                <div  (click)="setValue('device',device);" *ngFor="let device of carousel.devices" [class]="(selectedDeviceName === device.deviceTitle)? 'device active':'device'">
+                    <div class="device-image text-center">
+                        <img [src]="device.largeImageURL" />
+                    </div>
+                    <p class="device-name font-strong">{{device.deviceTitle}}</p>
+                </div>
+            </div>
+        </ui-carousel-item>
+    </ui-carousel>
+</section>

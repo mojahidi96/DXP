@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "anchorText": {
+            "title": "Anchor Linkable Text",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "Components": {
+            "items": {
+                "properties": {
+                    "componentName": {
+                        "title": "Component Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "componentName"
+                ],
+                "title": "Component",
+                "type": "object"
+            },
+            "title": "Components",
+            "type": "array"
+        }
+    },
+    "title": "basicForm",
+    "type": "object"
+}

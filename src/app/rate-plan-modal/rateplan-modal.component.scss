@@ -1,0 +1,33 @@
+.uitConfirmModal__buttons {
+    display: flex;
+}
+
+.uitConfirmModal__button {
+    flex: 1;
+    margin: 0 $global-spacing-2;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.uitConfirmModal__message {
+    @include typography-body-1;
+    margin: $global-spacing-4 0;
+}
+
+.uitConfirmModal__close {
+
+}
+
+.uitConfirmModal__heading {
+    flex: 1;
+}
+
+.uitConfirmModal__header {
+    display: flex;
+}

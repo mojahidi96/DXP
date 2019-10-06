@@ -1,0 +1,90 @@
+:host::ng-deep div.group{
+    padding: 0px !important;
+}
+
+.width-80{
+    width: 90%;
+}
+
+.required-text{
+    color: #4a4a4a;
+    font-size: 11px;
+}
+
+.form-section{
+    margin-top: 0px;
+}
+
+.technician-appointment{
+    .form-input{
+        margin-left: 20px;
+    }
+
+    & .form-input:first-child{
+        margin-left: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 500px)  {
+    form.width-80{
+        width: 100%;
+    }
+}
+
+:host::ng-deep input{
+    background-color: transparent !important;
+    font-size: 14px;
+}
+
+::ng-deep .mat-option  {
+    font-size: 14px !important;
+    line-height: normal!important;
+    height: 34px!important;
+}
+.form-column-2{
+::ng-deep .mat-form-field-wrapper{
+    padding-bottom:0px;
+    .mat-form-field-infix{
+        border-top: 0px;
+        width : 100%;
+        padding-right: 50px;
+    }
+}
+}
+::ng-deep .mat-icon-button {
+    font-size: 14px !important;
+}
+
+:host::ng-deep .mat-form-field-flex{
+    width: 100% !important;
+}
+
+:host::ng-deep .mat-select-placeholder{
+    font-size: 14px !important;
+}
+
+:host::ng-deep .mat-select-value-text{
+    font-size: 14px !important;
+}
+
+:host::ng-deep .mat-form-field-infix{
+    line-height: inherit !important;
+}
+
+:host::ng-deep .form-column-2 {
+    .form-input {
+        flex: 0 0 calc(100% - 40px) !important;
+        .group{
+            flex: 0 0 calc(100% - 62%);
+
+                margin-right: 90px;
+
+
+        }
+    }
+}
+
+:host::ng-deep .uitImageNode{
+    width: auto !important;
+}

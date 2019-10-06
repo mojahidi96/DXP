@@ -1,0 +1,16 @@
+
+    <label class="container checkBoxLabel">
+			<input
+				matPrefix
+				type="checkbox"
+				[(ngModel)]="node.value"
+				[lumenValidateNode]="node"
+				[id]="node.fullName"
+				[name]="node.fullName"
+				[required]="node.required"
+				[disabled]="node.readOnly"
+				[value]="node.value"
+			/>
+			<div class="checkmark"></div>
+ 			<span class="aria-label checkBoxContent">{{ node.title | lumenTranslate }}</span>
+    </label>

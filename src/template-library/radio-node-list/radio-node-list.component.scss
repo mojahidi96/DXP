@@ -1,0 +1,149 @@
+:host {
+    color: #000;
+
+    font-size: 14px;
+    justify-content: space-between;
+    //line-height: 38px;
+    margin: 10px 0;
+
+    .radioVerticalField {
+
+        justify-content: flex-end;
+        display: block;
+
+        .radioList{
+            height: 50px;
+        }
+    }
+
+    .radioHorizontalField{
+        justify-content: flex-end;
+
+        .radioList{
+            height: 50px;
+        }
+    }
+
+
+    /* The container */
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 17px;
+        width: 17px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.54);
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: white;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: white;
+        border-style: solid;
+        border-color: var(--radioborder);
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+        background-color: var(--radiobackground);
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        top: 2px;
+        left: 3px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+    }
+    .checkmark:before {
+        content: none;
+    }
+}
+
+.radio-group-column {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .radio-button {
+    margin: 5px;
+  }
+
+  .radio-selected-value {
+    margin: 15px 0;
+  }
+
+  .radio-content{
+	margin-left: 30px;
+}
+.mr-20{
+	margin-right: 20px;
+}
+  .payment-card{
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+
+	li{
+		list-style: none;
+		max-width: 250px;
+		min-width: 250px;
+		display: inline-block;
+		border-radius: 1.5px;
+		border: 1px solid #f2f2f2;
+		padding: 10px;
+
+		h3{
+			font-size: 16px;
+			margin-bottom: 30px;
+			font-weight: normal;
+		}
+
+		p{
+			font-size: 12px;
+		}
+
+		&.active{
+			color: #0077be;
+            border-color: #0077be;
+			h3{
+				font-weight: bold;
+			}
+		}
+
+	}
+}

@@ -1,0 +1,127 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "currency": {
+            "title": "Currency",
+            "type": "string"
+        },
+        "sections": {
+            "items": {
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "subTitle": {
+                        "title": "Sub Title",
+                        "type": "string"
+                    },
+                    "internalNodeName": {
+                        "title": "Internal Node",
+                        "description": "If data model to be displayed is specific, then specify the path",
+                        "type": "string"
+                    },
+                    "hidden": {
+                        "title": "Hidden Section ?",
+                        "type": "boolean"
+                    },
+                    "action": {
+                        "title": "On Event Action To Be Performed",
+                        "description": "If any action on Radio button / Checkbox is to captured",
+                        "enum": [
+                            "hide",
+                            "populate-data",
+                            "none"
+                        ],
+                        "default" : "none",
+                        "type": "string"
+                    },
+                    "actionProperties": {
+                        "properties": {
+                            "selectNodeName":{
+                                "title": "Node Name - On Action Get Selected Value",
+                                "type": "string"
+                            },
+                            "checkValue": {
+                                "title": "Check Selected Value Against To Perform Action",
+                                "description": "If action value is set, then unhide the section",
+                                "type": "string"
+                            },
+                            "sectionPosition": {
+                                "title": "Position of Section For Action",
+                                "type": "string"
+                            },
+                            "fields": {
+                                "items": {
+                                    "properties": {
+                                        "getNode": {
+                                            "title": "Get Node Value",
+                                            "type": "string"
+                                        },
+                                        "setNode": {
+                                            "title": "Set Node With Value",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "setNode"
+                                    ],
+                                    "title": "Field",
+                                    "type": "object"
+                                },
+                                "title": "Fields",
+                                "type": "array"
+                            }
+                        },
+                        "title": "Action",
+                        "type": "object"
+                    }
+                },
+                "required": ["action"],
+                "title": "Section",
+                "type": "object"
+            },
+            "title": "Sections",
+            "type": "array"
+        },
+        "Components": {
+            "items": {
+                "properties": {
+                    "componentName": {
+                        "title": "Component Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "componentName"
+                ],
+                "title": "Component",
+                "type": "object"
+            },
+            "title": "Components",
+            "type": "array"
+        }
+    },
+    "title": "sectionForm",
+    "type": "object"
+}

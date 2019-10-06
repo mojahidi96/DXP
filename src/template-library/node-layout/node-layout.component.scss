@@ -1,0 +1,35 @@
+$paddingSize: 1.6rem;
+$marginSize: 1.2rem;
+
+:host {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+
+    .uitNodeLayout__group {
+        &:nth-of-type(odd) {
+            margin-right: $marginSize;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+
+        &:last-of-type:nth-of-type(odd):not(:only-of-type) {
+            flex-grow: initial;
+            width: calc(100% * (1/2) - 2*#{$paddingSize} - #{$marginSize}/2);
+        }
+
+        &:only-of-type {
+            width: 100%;
+        }
+
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-bottom: $marginSize;
+        padding: $paddingSize;
+        width: calc(100% * (1/2) - 4*#{$paddingSize} - #{$marginSize});
+    }
+}

@@ -1,0 +1,25 @@
+<div  class="dxp-form-group" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+  <label><div class="dxp-label">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span></div>
+
+
+    <textarea
+        [(ngModel)]="node.value"
+        [lumenValidateNode]="node"
+        [id]="node.fullName"
+        [name]="node.fullName"
+        [placeholder]="node.title | lumenTranslate"
+        [required]="node.required"
+        [disabled]="node.readOnly"
+        #field="ngModel"
+        class="dxp-form-control"
+
+    > </textarea>
+
+
+    <em *ngIf="field.invalid && field.dirty && field.touched">{{ node.validationMessage | lumenTranslate }}</em>
+
+
+
+  </label>
+
+</div>

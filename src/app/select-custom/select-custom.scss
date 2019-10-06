@@ -1,0 +1,100 @@
+@import "variables";
+
+$primary: map-get($sncr-app-theme, primary);
+
+.page-heading{
+	margin-top: 20px;
+}
+
+.modem-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 5px 0px 5px 0px;
+
+	.modem-radio-button {
+	  margin: 10px 0px;
+    border-color: #000000;
+	    .modem-name{
+			min-width: 400px;
+			display: inline-block;
+  		}
+	}
+
+}
+
+@media only screen and (max-width: 500px)  {
+	.modem-name{
+		min-width: auto !important;
+	}
+
+}
+
+
+/***
+Video Custom Screen
+ */
+
+.section{
+    margin-top: 20px;
+
+    .form-section-title{
+        border-bottom: 1px solid #727272;
+        margin-bottom: 30px;
+    }
+    .innerSection{
+        margin-top:25px;
+        width:100%;
+        display: inline-block !important;
+        p{
+            margin-top:0px;
+        }
+    }
+}
+::ng-deep .mat-checkbox-label{
+    font-weight: bold;
+}
+
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: var(--radiobackground);
+}
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--radioborder);
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-checkmark {
+  background-color: var(--checkMarkChecked);
+}
+
+.column-2{
+    flex-wrap: wrap;
+
+    .col{
+        flex: 0 0 calc(50% - 40px);
+        margin-right: 40px;
+        .img1{
+            width:350px;
+        }
+        .img2{
+            width:150px;
+            float:left;
+        }
+        .img3{
+            width:100px;
+            float:left;
+            margin-left:20px;
+        }
+    }
+    & .col:first-child{
+        flex: 0 0 calc(50% - 70px);
+    }
+
+}
+
+.padL30{
+    padding-left:30px;
+}
+.col{
+    width: 100%;
+    margin-bottom: 15px;
+}

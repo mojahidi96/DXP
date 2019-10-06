@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "type":{
+                        "title": "Get Data",
+                        "type": "string",
+                        "enum": [
+                            "default",
+                            "router-id",
+                            "location.search"
+                        ],
+                        "default": "default"
+                    },
+                    "fieldPath": {
+                        "title": "Node Name",
+                        "type": "string"
+                    },
+                    "exprType": {
+                        "title": "Expression Type",
+                        "type": "string",
+                        "enum": [
+                            "constant",
+                            "json-path"
+                        ]
+                    },
+                    "expression": {
+                        "title": "Expresion",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nodeName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "auto",
+    "type": "object"
+}

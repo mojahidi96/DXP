@@ -1,0 +1,11 @@
+<section *ngIf="display">
+    <nav>
+        <div class="progress-bar" >
+            <div class="progress-bar-item" *ngFor="let tile of tiles; let i = index">
+                    <div [ngClass]="[position >  i ? 'dot blue done' : '',  position == i ? 'dot blue' : '', position <= i ? 'dot' : '']">{{i + 1}}</div>
+                    <div class="bar"></div>
+                    <div [ngClass]="position == i ? 'label active' : 'label'"><span>{{tile}}</span> </div>
+            </div>
+        </div>
+    </nav>
+</section>

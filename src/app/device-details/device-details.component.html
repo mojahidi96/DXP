@@ -1,0 +1,12 @@
+<ng-container *ngIf="selectedDevice">
+    <div class="device">
+        <div class="device-image">
+            <img [src]="selectedDevice.largeImageURL" />
+        </div>
+        <div class="device-detail">
+            <p class="device-name font-strong">{{selectedDevice.deviceTitle}}</p>
+            <p class="est-trade-value mx-0" *ngIf="tradeInValue">Est. trade-in value</p>
+            <p class="device-price mx-0" *ngIf="tradeInValue"> {{tradeInValue}} </p>
+        </div>
+    </div>
+</ng-container>

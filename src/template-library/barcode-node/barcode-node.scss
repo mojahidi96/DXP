@@ -1,0 +1,32 @@
+/*:host {
+    @include typography-body-1;
+
+    display: block;
+}*/
+
+.uitImageCaptureNode__cta {
+  display: block;
+}
+
+.uitImageCaptureNode__image {
+  display: block;
+  max-height: 50rem;
+  max-width: 50rem;
+}
+
+.uitImageCaptureNode__imageContainer {
+  border-radius: .5rem;
+  overflow: hidden;
+
+  align-items: center;
+  background: rgba(#000, .35);
+  display: flex;
+  height: 30rem;
+  justify-content: center;
+  margin-bottom: 1.6rem;
+}
+
+.uitImageCaptureNode__placeholder {
+  color: rgba(#000, .35);
+  font-size: 4rem;
+}

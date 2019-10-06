@@ -1,0 +1,157 @@
+<div class="container" insights [rootNode]="rootNode">
+    <ng-container *ngFor="let component of config.Components">
+        <uiconfig-node [config]="config" [loadComponent]="component.componentName" [node]="rootNode"
+        [data]="data"></uiconfig-node>
+    </ng-container>
+    <!--<progress-bar [rootNode]="rootNode" [config]="config" ></progress-bar>-->
+    <div>       
+        <div *ngIf="getImage()" class="pull-left">
+            <img [src]="getImage()" class="title-img" />
+        </div>
+        <div [ngClass]="{'order-title': getImage()}">
+            <h2 class="page-heading mt-30" *ngIf="config.title">{{config.title}}<span *ngIf="config.isContentRequired.toLowerCase() === 'yes'"> {{customerEmail}}</span></h2>
+            <h2 class="page-heading mt-30" *ngIf="config.subTitle && transId">{{config.subTitle}} {{transId}}</h2>          
+        </div>
+    </div>
+ 
+    <div class="tableResponsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td colspan="4"><h3 class="form-section-title font-strong">{{config.subTitle1}}</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="flexRow1">
+                            <div class="col1">
+                                <div class="flexRow" *ngFor="let left of leftNode">
+                                    <div class="colin1 text-left font-strong">{{left.title | lumenTranslate}}</div>
+                                    <div *ngIf="left.title != 'hb.CommonFields.CustomerInfo.phoneNumber.label'" class="colin2 text-right">{{left.value}}</div>
+                                    <div *ngIf="left.title === 'hb.CommonFields.CustomerInfo.phoneNumber.label'" class="colin2 text-right">{{left.value | phoneNumber}}</div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="flexRow" *ngFor="let right of rightNode">
+                                    <div class="colin1 text-left font-strong">{{right.title | lumenTranslate}}</div>
+                                    <div class="colin2 text-right">{{right.value}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="config.subTitle3">
+                    <td colspan="4">
+                        <h3 class="form-section-title font-strong">{{config.subTitle3}}</h3>
+                    </td>
+                </tr>
+                <tr *ngIf="config.subTitle3">
+                    <td colspan="4">
+                        <div class="flexRow1">
+                            <div class="col1">
+                                <div class="flexRow" *ngFor="let cardDetail of cardDetailsNode">
+                                    <div class="colin1 text-left font-strong">{{cardDetail.title | lumenTranslate}}</div>
+                                    <div class="colin2 text-right">{{cardDetail.value}}</div>
+                                </div>
+                                <div class="flexRow" *ngFor="let transactionDetail of transactionDetailNode">
+                                    <div class="colin1 text-left font-strong">{{transactionDetail.title | lumenTranslate}}</div>
+                                    <div class="colin2 text-right">{{transactionDetail.value}}</div>
+                                </div>
+                            </div>         
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <h3 class="form-section-title font-strong mt-30">{{config.subTitle2}}</h3>
+                    </td>
+                </tr>
+
+                <!-- <section *ngIf="data.CommonFields.Authentication.isFlowCheck"> -->
+                <section *ngIf="dataType === 'broadband'">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Items</th>
+                                <th>OneTime Charges</th>
+                                <th>Monthly Charges</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let items of selectedItems">
+                                <td colspan="2">{{items.itemName}}</td>
+                                <td>{{items.itemOneTimePrice | currency:data.CommonFields.CurrencyType:'symbol'}}</td>
+                                <td>{{items.itemMonthlyPrice | currency:data.CommonFields.CurrencyType:'symbol'}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td class="font-strong">Total: {{oneTimeTotal |
+                            currency:data.CommonFields.CurrencyType:'symbol'}}
+                                </td>
+                                <td class="font-strong">Total: {{monthlyTotal |
+                            currency:data.CommonFields.CurrencyType:'symbol'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p *ngIf="installText !== 'Standard Tech'" class="form-section-title font-strong marT50">
+                        {{installText}} </p>
+                    <p *ngIf="installText === 'Standard Tech'" class="form-section-title font-strong marT50">{{installText}}
+                        requested for {{dateValue[0].value | date :'medium'}}</p>
+                </section>
+
+                <!--TODO
+            display dynamically-->
+                <!-- <section *ngIf="!data.CommonFields.Authentication.isFlowCheck"> -->
+                <section *ngIf="dataType === 'market' || dataType === 'wireless'">
+                    <div class="billing-details">
+                        <div class="billing-row d-flex column-2-big" *ngFor="let item of selectedItems">
+                            <div class="imageColumn"><img src="{{config.cmsUrl}}{{item.itemImage}}" width="56"/></div>
+                            <div class="deviceDescription">
+                                <span *ngIf="item.itemName" >{{item.itemName}} {{item.itemColorLabel}} {{item.itemVariant}}<br/></span>
+
+                                <span *ngIf="item.itemSerialNumber" ><b>Serial Number(s):</b> {{item.itemSerialNumber}} <br/> </span>
+
+                                <span *ngIf="item.itemQuantity"><b>Quantity:</b> {{item.itemQuantity}} <br/></span>
+
+                                <span *ngIf="item.ratePlan"><b>Plan:</b> {{item.ratePlan.planPackageName}} /mo</span>
+                            </div>
+                            <div class="billing-column1 text-right" id="priceText" *ngIf="item.ratePlan">{{getRatePlanPrice(item) | currency:data.CommonFields.CurrencyType:'symbol'}} /mo</div>
+                            <div class="billing-column1 text-right" id="priceText">{{getItemPrice(item,false) | currency:data.CommonFields.CurrencyType:'symbol'}}</div>
+                        </div>
+
+                        <div *ngIf="tradeInDeviceDetails?.selectedDevice" class="billing-row d-flex column-2-big trade-device">
+                                <div class="imageColumn"><img [src]="tradeInDeviceDetails.selectedDevice.largeImageURL" width="56"/></div>
+                                <div class="deviceDescription">
+                                    <span>{{tradeInDeviceDetails.selectedDevice.deviceTitle}} {{tradeInDeviceDetails.selectedDeviceColor}}</span>
+                                    <br/>
+                                    <!-- <span><b>Serial Number(s):</b>  </span> -->
+                                    <br/>
+                                    <span><b>Quantity:</b> 1</span>
+                                    <br/>
+                                    <!-- <span *ngIf="item.ratePlan"><b>Plan:</b>  /mo</span> -->
+                                </div>
+                                <!-- <div class="billing-column1 text-right" id="priceText">{{getRatePlanPrice(item) | currency:data.CommonFields.CurrencyType:'symbol'}} /mo</div>-->
+                                <div class="billing-column1 text-right" id="priceText">({{getItemPrice(item,true)}})</div> 
+                        </div>
+
+
+                        <div class="billing-row d-flex column-2">
+                            <div class="billing-column">Taxes &amp; delivery charges</div>
+                            <div class="billing-column text-right">{{data?.CommonFields?.OrderInformation?.totalTax | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+                        </div>
+                        <div class="billing-row d-flex column-2 font-strong bill-total">
+                            <div class="billing-column">Total</div>
+                            <div class="billing-column text-right">{{getTotal() | currency:data.CommonFields.CurrencyType:'symbol'}}</div>
+                        </div>
+                    </div>
+                </section>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="marT50 marB30">
+        <button *ngIf="config.cancelLabel" class="dxp_Btn btn-stroked marR20">{{config.cancelLabel}}</button>
+        <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary" (click)="placeOrder();">{{config.submitLabel}}</button>
+    </div>
+</div>

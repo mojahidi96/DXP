@@ -1,0 +1,43 @@
+:host {
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+    display: block;
+}
+
+.uitStringNode {
+    display: block;
+}
+
+.visa{
+    background: url("./cards.png") no-repeat 4px 0px;
+    background-size: cover;
+    width: 39px;
+    height: 22px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.mastercard{
+    background: url("./cards.png") no-repeat -39px 0px;
+    background-size: cover;
+    width: 39px;
+    height: 22px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.amex{
+    background: url("./cards.png") no-repeat -82px 0px;
+    background-size: cover;
+    width: 39px;
+    height: 22px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}

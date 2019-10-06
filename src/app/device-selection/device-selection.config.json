@@ -1,0 +1,130 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "deviceType": {
+            "title": "DeviceType Label",
+            "type": "string"
+        },
+        "manufacturer": {
+            "title": "Manufacturer Label",
+            "type": "string"
+        },
+        "model": {
+            "title": "Model Label",
+            "type": "string"
+        },
+        "color": {
+            "title": "Color Label",
+            "type": "string"
+        },
+        "storage": {
+            "title": "Storage Label",
+            "type": "string"
+        },
+        "carrier": {
+            "title": "Carrier Label",
+            "type": "string"
+        },
+        "deviceCondition": {
+            "title": "DeviceCondition Label",
+            "type": "string"
+        },
+        "deviceConditionQuestion1": {
+            "title": "Device Condition Question1 Label",
+            "type": "string"
+        },
+        "deviceConditionQuestion2": {
+            "title": "Device Condition Question2 Label",
+            "type": "string"
+        },
+        "photoFront": {
+            "title": "PhotoFront Label",
+            "type": "string"
+        },
+        "photoBack": {
+            "title": "PhotoBack Label",
+            "type": "string"
+        },
+        "tradeInValue": {
+            "title": "Trade-In Value Label",
+            "type": "string"
+        },
+        "cmsUrl": {
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "infoDescription": {
+            "title": "Information Description",
+            "type": "string"
+        },
+        "nodeName1": {
+            "title": "Selected Node Name1",
+            "type": "string"
+        },
+        "nodeName2": {
+            "title": "Selected Node Name2",
+            "type": "string"
+        },
+        "nodeName3": {
+            "title": "Selected Node Name3",
+            "type": "string"
+        },
+        "nodeName4": {
+            "title": "Selected Node Name4",
+            "type": "string"
+        },
+        "nodeName5": {
+            "title": "Selected Node Name5",
+            "type": "string"
+        },
+        "validationMessage": {
+            "title": "validation Message",
+            "type": "string"
+        },
+        "dataNodeName": {
+            "title": "Response Node Name",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "defaultImage": {
+                        "title": "Default Image Background URL",
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "getVal": {
+                        "title": "Get Value From",
+                        "type": "string"
+                    },
+                    "setVal": {
+                        "title": "Set Above Value to Key",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "keyName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "deviceSelection",
+    "type": "object"
+}

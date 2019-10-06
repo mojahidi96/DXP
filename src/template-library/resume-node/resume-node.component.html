@@ -1,0 +1,25 @@
+<div class="dxp-form-group" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+  <label><div class="dxp-label">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span></div>
+  <input
+      [(ngModel)]="node.value"
+      [lumenValidateNode]="node"
+      [id]="node.fullName"
+      [max]="node.schema.maximum"
+      [min]="node.schema.minimum"
+      [name]="node.fullName"
+      [placeholder]="node.title | lumenTranslate"
+      [required]="node.required"
+      [type]="type"
+      [disabled]="node.readOnly"
+      (keyup)="onKey($event)"
+      #field="ngModel"
+      class="dxp-form-control"
+  >
+    <em *ngIf="node.error && field.invalid && field.dirty && field.touched">{{ node.validationMessage | lumenTranslate }}</em>
+  </label>
+</div>
+
+<div *ngIf="cwsRef">
+    <h4 class="page-heading">Would you like to Resume Your Previous Journey</h4>
+    <button class="dxp_Btn btn-primary" *ngIf="cwsRef" (click)="resume($event)">Resume Journey</button>
+</div>

@@ -1,0 +1,45 @@
+
+
+:host {
+  display: block;
+  line-height: 1.2;
+  margin: 1rem 0;
+
+}
+
+label, input, select {
+  display: block;
+}
+
+.dxp-form-group{
+    width: 40%;
+  .dxp-label{
+    display: block;
+    font-size: 12px;
+    color: #717171;
+  }
+}
+.required-text{
+    color: #4a4a4a;
+    font-size: 11px;
+}
+.button-row{
+    display:block;
+    button{
+        &:last-child{
+            float:right;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px)  {
+    form.width-80{
+        width: 100%;
+    }
+}
+
+.example-form{
+    .form-section{
+      margin-top: 30px;
+    }
+  }

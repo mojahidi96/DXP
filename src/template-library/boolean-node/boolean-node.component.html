@@ -1,0 +1,16 @@
+<div class="form-check">
+    <label class="checkBoxLabel"  [for]="node.fullName">
+           <input
+				[(ngModel)]="node.value"
+				[lumenValidateNode]="node"
+				[id]="node.fullName"
+				[name]="node.fullName"
+				type="checkbox"
+				[disabled]="node.readOnly"
+			>
+            <div class="checkmark"></div>
+		<span class="checkBoxContent">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span></span>
+	 </label>
+    <div class="clearfix"></div>
+	 <em *ngIf="node.error">{{ node.validationMessage | lumenTranslate }}</em>
+</div>

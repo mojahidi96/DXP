@@ -1,0 +1,100 @@
+<div class="container" insights [rootNode]="rootNode">
+
+    <progress-bar [rootNode]="rootNode" [config]="config"></progress-bar>
+    <h2 class="page-heading mt-30">{{config?.title}}</h2>
+
+    <div class="scrollDiv">
+        <div class="flex-grid-thirds">
+            <!-- Template 1 -->
+            <!-- Without Image and List of Packages with Features Ordered By -->
+            <ng-container *ngIf="featuresList && config?.displayType === 'compare'">
+                <div class="col" *ngIf="featuresList">
+                    <ul class="navigation">
+                        <li>{{config?.listHeader}}</li>
+                        <li *ngFor="let feature of featuresList">{{feature.featureName}}</li>
+                    </ul>
+                </div>
+
+                <div *ngFor="let pack of packages" [ngClass]="(packageSelected === pack) ? 'col selectedCol' : 'col'">
+                    <ul class="navigation">
+                        <li>
+                            <span [ngClass]="(packageSelected === pack) ? 'whiteText' : 'greyText'" >{{pack.packageName}}</span>
+                            <span [ngClass]="(packageSelected === pack) ? 'whiteText1' : 'greyText1'" >{{pack.description}}</span>
+                            <span [ngClass]="(packageSelected === pack) ? 'whiteTextSm' : 'greyTextSm'" >{{pack.monthlyPrice | currency:config?.currency:'symbol'}}</span>
+                        </li>
+
+                        <ng-container *ngFor="let feature of featuresList">
+                            <ng-container *ngIf="doesFeatureExists(pack,feature); else emptyLi">
+                                <ng-container *ngIf="feature.featureType === 'DESC'">
+                                    <li>{{getFeatureDescription(pack,feature)}}</li>
+                                </ng-container>
+                                <ng-container *ngIf="feature.featureType === 'CHECK'">
+                                    <li><i class="checkmark"></i></li>
+                                </ng-container>
+                                <!-- <ng-container *ngIf="feature.featureType === 'STAR'">
+                                    <li><i [ngClass]="(packageSelected === pack) ? 'star-solid' : 'star'" *ngFor="let i of ' '.repeat(getFeatureNumber(pack, feature)).split(''), let x = index"></i></li>
+                                </ng-container> -->
+                                <ng-container *ngIf="feature.featureType === 'STAR'">
+                                        <li><i [ngClass]="(x === getStars(getFeatureNumber(pack, feature))[x]) ? 'star-solid font-26' : 'star'" *ngFor="let i of getStars(totalStars), let x = index"></i></li>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+
+                        <ng-template #emptyLi>
+                            <li><i class=""></i></li>
+                        </ng-template>
+                        <li>
+                            <button class="dxp_Btn btn-stroked" (click)="selectPackage(pack);" [ngClass]="(packageSelected === pack) ? 'selected' : ''">
+                                <ng-container *ngIf="(packageSelected === pack); else default">
+                                    <i class="checkmark"></i>
+                                </ng-container>
+                                <ng-template #default>
+                                    {{config?.tileSelect}}
+                                </ng-template>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+
+            <!-- Template 2 -->
+            <!-- With Image and List of Packages - Not Ordered By Features -->
+            <ng-container *ngIf="config?.displayType === 'single'">
+                <div class="d-flex service-selection">
+                    <div class="" *ngFor="let pack of packages" [ngClass]="(packageSelected === pack) ? 'service-box selected' : 'service-box'">
+                        <img *ngIf="pack.image" src="{{config.cmsUrl}}{{pack.image}}" />
+                        <h5 class="plan-name font-strong">{{pack.packageName}}</h5>
+                        <h5 class="phone-price"><span>{{pack.monthlyPrice | currency:config?.currency:'symbol'}}</span> <span class="font-18">/ month</span></h5>
+                        <p>{{pack.description}}</p>
+                        <div class="plan-features-list">
+                            <ul>
+                                <li *ngFor="let feature of pack.features">{{feature.featureName}}</li>
+                            </ul>
+                        </div>
+                        <button class="dxp_Btn btn-stroked" (click)="selectPackage(pack);" [ngClass]="(packageSelected === pack) ? 'selected' : ''">
+                            <ng-container *ngIf="(packageSelected === pack); else default">
+                                <i class="checkmark"></i>
+                            </ng-container>
+                            <ng-template #default>
+                                {{config?.tileSelect}}
+                            </ng-template>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+
+    <!--<mat-checkbox color="primary">Include An Advanced <span class="font-strong">Wireless Modem</span> (required for this
+                                  speed). Uncheck the box if you already have a compatible modem.
+    </mat-checkbox>-->
+
+
+    <div>
+        <button class="dxp_Btn btn-stroked marR20" *ngIf="config.cancelLabel">{{config.cancelLabel}}</button>
+        <button class="dxp_Btn btn-primary" *ngIf="config.submitLabel" [insights]="true" [DataEvent]="packageSelected.packageName" [rootNode]="rootNode" [disabled]="isDisabled" (click)="submitPack();"  tabindex="1">{{config.submitLabel}}</button>
+    </div>
+
+
+</div>

@@ -1,0 +1,12 @@
+<h1 *ngIf="config.title">{{ config.title | lumenTranslate }}</h1>
+<h2 *ngIf="config.subTitle">{{ config.subTitle | lumenTranslate }}</h2>
+<div class="row">
+  <div class="column" *ngFor="let cta of config.ctas">
+    <button class="examplebutton"
+            [style.backgroundImage]="'url(' + cta.backgroundImage + ')'"
+    (click)="click(cta)"
+    type="button">
+      <b>{{ cta.label | lumenTranslate }}</b> </button>
+  <p class="align" >{{ cta.description | lumenTranslate }}</p>
+</div>
+</div>

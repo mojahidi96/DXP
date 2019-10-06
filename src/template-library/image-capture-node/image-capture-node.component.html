@@ -1,0 +1,31 @@
+
+<div class="uitImageCaptureNode__imageContainer mr-20 uitImageCaptureNode__custom_img_ipad">
+
+    <img
+        *ngIf="node.value; else placeholder"
+        [src]="node.value"
+        class="uitImageCaptureNode__image"
+    >
+</div>
+<div
+    *ngIf="error"
+    class="uitImageCaptureNode__error"
+>{{ 'Image Capture Failed' | lumenTranslate }}</div>
+<div
+    *ngIf="node.error"
+    class="uitImageCaptureNode__error"
+>{{ node.validationMessage | lumenTranslate }}</div>
+<button
+    *ngIf="!node.readOnly"
+    (click)="captureImage()"
+    icon="camera"   
+    class="uitImageCaptureNode__placeholder" style="font-size: 1.4rem"
+>{{ 'Take Photo' | lumenTranslate }}</button>
+<ng-template #placeholder>
+    <!-- <mat-icon
+        *ngIf="!node.value"
+        class="uitImageCaptureNode__placeholder"
+    >
+        camera_alt
+    </mat-icon> -->
+</ng-template>

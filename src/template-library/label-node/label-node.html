@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline" class="uitStringNode">
+        <input
+            [(ngModel)]="node.value"
+            [lumenValidateNode]="node"
+            [id]="node.fullName"
+            [max]="node.schema.maximum"
+            [min]="node.schema.minimum"
+            [name]="node.fullName"
+            [placeholder]="node.title | lumenTranslate"
+            [required]="node.required"
+            [type]="type"
+            disabled
+            matInput
+        >
+</mat-form-field>

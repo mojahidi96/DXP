@@ -1,0 +1,61 @@
+<div class="container" insights [rootNode]="rootNode">
+    <section class="section">
+        <ng-container *ngIf="items.length > 0; else emtpyTemp">
+            <h3 class="form-section-title font-strong">{{config.subTitle}}</h3>
+            <ng-container *ngFor="let item of items">
+                <div class="row">
+                    <div class="col1"><img src="{{config.cmsUrl}}{{item.itemImage}}" class="img-fluid" /></div>
+                    <div class="col2">
+                        <span>{{item.itemName}} {{item.itemColorLabel}} {{item.itemVariant}}</span>
+                        <br/>
+                        <span *ngIf="item.ratePlan">
+                            <b>Plan:</b> {{item.ratePlan.planPackageName}} /mo
+                        </span>
+                    </div>
+                    <div class="col3">
+                        <div class="form-input stateDiv">
+                            <mat-form-field appearance="outline">
+                                <mat-select [(value)]="item.itemQuantity"  required>
+                                    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <i class="delete" (click)="removeProduct(item);"></i>
+                    </div>
+                    <div class="col4">
+                        <div class="price" *ngIf="item.ratePlan">{{getPlanPrice(item) | currency:data?.CommonFields?.CurrencyType:'symbol'}} /mo</div>
+                    </div>
+                    <div class="col5">
+                        <div class="price">{{getItemPrice(item) | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </ng-container>
+            <hr class="hr marT30" />
+            <div class="row">
+                <div class="col1"><span class="totalText font-strong">Total</span></div>
+                <div class="col2"></div>
+                <div class="col3"></div>
+                <div class="col4"></div>
+                <div class="col5">
+                    <div class="font-strong">{{getTotal() | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <span class="marB20 pull-right">{{config.infoLabel}}</span>
+        </ng-container>
+
+        <ng-template #emtpyTemp>
+            <div class="example-button-row marT40 marB30">
+                <span class="marB20 pull-left">Shopping cart empty.</span>
+                <div class="clearfix"></div>
+            </div>
+        </ng-template>
+
+    </section>
+    <div class="example-button-row marT40 marB30">
+        <div class="clearfix"></div>
+        <button *ngIf="cancelLabel" class="dxp_Btn btn-stroked" (click)="submitCart(true)" >{{cancelLabel}}</button>
+        <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary marL20 pull-right" [insights]="true" [rootNode]="rootNode" (click)="submitCart(false)" [disabled]="!(items.length > 0)" >{{config.submitLabel}}</button>
+    </div>
+</div>

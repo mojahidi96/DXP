@@ -1,0 +1,17 @@
+<mat-form-field class="uitStringNode" appearance="outline">
+    <input
+        [(ngModel)]="scannedCode"
+        [lumenValidateNode]="node"
+        [id]="node.fullName"
+        [name]="node.fullName"
+        [placeholder]="node.title | lumenTranslate"
+        [required]="node.required"
+        [disabled]="node.readOnly"
+        type="string"
+        matInput
+    >
+    <mat-error>{{ node.validationMessage | lumenTranslate }}</mat-error>
+</mat-form-field>
+
+<button *ngIf="!node.readOnly" (click)="captureBarCode()" icon="camera"
+        class="uitImageCaptureNode__cta">{{ "Scan Barcode" | lumenTranslate }}</button>

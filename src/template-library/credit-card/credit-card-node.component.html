@@ -1,0 +1,21 @@
+ <mat-form-field class="uitStringNode">
+     <input
+                [(ngModel)]="node.value"
+                [hbValidateNode]="node"
+                [id]="node.fullName"
+                [max]="node.schema.maximum"
+                [min]="node.schema.minimum"
+                [name]="node.fullName"
+                [placeholder]="node.title | translate"
+                [required]="node.required"
+                [type]="type"
+                [disabled]="node.readOnly"
+                (keyup)="cardFromNumber($event)"
+                matInput
+            />
+     <mat-error>{{ node.validationMessage | translate }}</mat-error>
+     <i class="{{cardDisp}}">{{cardDisp}}</i>
+ </mat-form-field>
+
+
+

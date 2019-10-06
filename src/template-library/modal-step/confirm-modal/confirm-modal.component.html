@@ -1,0 +1,35 @@
+<div class="uitConfirmModal__header">
+  <h3 *ngIf="config.subTitle">{{  data.title | lumenTranslate }}</h3>
+  <button (click)="close(false)" icon="close"
+          variant="icon"/>
+</div>
+<p class="uitConfirmModal__message">
+    {{ data.message | lumenTranslates }}
+</p>
+<ng-container *ngIf="data.type === 'input'; else default">
+    <mat-form-field class="uitStringNode">
+        <ng-container *ngFor="let field of data.fields">
+            <input matInput [(ngModel)]="field.value" placeholder="{{ field.label | lumenTranslate }}">
+        </ng-container>
+    </mat-form-field>
+    <div
+        class="uitConfirmModal__buttons"
+    >
+      <button (click)="close(false)" icon="close"
+              variant="icon" class="uitConfirmModal__button">{{ data.cancelLabel || 'Cancel' | lumenTranslate }}</button>
+
+      <button (click)="closeWithResult(true, data)" icon="close"
+              variant="icon" class="uitConfirmModal__button">{{ data.confirmLabel || 'Confirm' | lumenTranslate }}</button>
+    </div>
+</ng-container>
+<ng-template #default>
+    <div
+        class="uitConfirmModal__buttons"
+    >
+      <button (click)="close(false)" icon="close"
+              variant="icon" class="uitConfirmModal__button">{{ data.cancelLabel || 'Cancel' | lumenTranslate }}</button>
+
+      <button (click)="close(true, data)" icon="close"
+              variant="icon" class="uitConfirmModal__button">{{ data.confirmLabel || 'Confirm' | lumenTranslate }}</button>
+    </div>
+</ng-template>

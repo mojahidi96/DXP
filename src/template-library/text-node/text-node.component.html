@@ -1,0 +1,7 @@
+<div
+    *ngIf="!errorMessage; else error"
+    [innerHTML]="node?.externalValue"
+></div>
+<ng-template #error>
+    {{ errorMessage }}
+</ng-template>

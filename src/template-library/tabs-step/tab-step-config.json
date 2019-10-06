@@ -1,0 +1,36 @@
+{"$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "message": {
+            "message": "Message",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "tab":{
+                        "title": "TabTitle",
+                        "type": "string"
+                    },
+                    "componentName": {
+                        "title": "Component",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nodeName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "tabs",
+    "type": "object"
+}

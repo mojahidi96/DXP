@@ -1,0 +1,16 @@
+<section *ngIf="colors">
+    <div class="mt-10">
+        <div class="form-input">
+            <label for="input1" class="font-strong font-size-18">Color: <span class="font-normal">{{selectedColor | titlecase}}</span></label>
+        </div>
+
+        <div class="selection-tags">
+            <ul class="colors">
+                <li *ngFor="let color of colors" (click)="setValue('color',color.color)" [class]="(selectedColor ===color.color)?'active':''">
+                    <span class="color-tag color-{{color.color}}"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+:host {
+  font-size: 1.6rem;
+  line-height:1.2;
+    display: block;
+}
+
+.uitSignatureNode {
+    display: block;
+
+    .mat-form-field-underline {
+        display: none;
+    }
+
+    .mat-form-field-infix {
+        padding: 4px 0 0 0;
+    }
+
+    .mat-form-field-infix {
+        padding: 4px 0 0 0;
+    }
+}
+
+.uitSignatureNode__canvas {
+    width: 100%;
+    height: 200px;
+    border: 1px dashed rgba(#000, .15);
+    position: relative;
+    display: block;
+    border-bottom: none;
+}
+
+.uitSignatureNode__canvas--hidden {
+    display: none;
+}
+
+.uitSignatureNode__reset {
+    position: absolute;
+    right: 2px;
+    top: -20px;
+}
+
+.uitSignatureNode__input {
+    height: 0;
+    position: absolute;
+}

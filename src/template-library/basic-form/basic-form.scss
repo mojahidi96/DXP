@@ -1,0 +1,111 @@
+:host::ng-deep input{
+    background-color: transparent !important;
+    font-size: 14px;
+}
+:host::ng-deep  input:-webkit-autofill{
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+
+.container{
+    padding: 20px 30px;
+    .zipCode{
+        display:inline-block;
+    }
+    .hintText{
+        display: inline;
+        position: relative;
+        font-size:12px;
+        float:left;
+    }
+    .row1{
+        display:inline-block;
+        a{
+            margin-left:10px;
+        }
+    }
+}
+
+
+/*.checkmark{
+    font-size:24px;
+    color: mat-color($warning, 50);
+}*/
+.form-section{
+    max-width:58%;
+    margin-top: 10px;
+    .form-column-2 {
+        .address{
+            flex: 0 0 calc(76% - 20px);
+        }
+        .zipCode{
+            flex: 0 0 calc(10% - 20px);
+        }
+        .stateDiv{
+            flex: 0 0 calc(50% - 0px);
+        }
+    }
+}
+
+.font18{
+    font-size:18px;
+}
+
+.loadingText{
+    float:left;
+    margin-top:10px;
+    //color:mat-color($primary, A100);
+    font-size:12px;
+}
+.lds-css{
+    margin-top:-10px;
+}
+.loaderMain{
+    margin-top:42px;
+}
+
+/*min-width: 398.4px;pointer-events: auto;font-size: 25px;transform: translateX(-16px) translateY(-96px);top: 164.6px;left: 40px;*/
+:host::ng-deep .tooltip {
+    position: relative;
+    display: inline-block;
+    /* If you want dots under the hoverable text */
+  }
+
+  /* Tooltip text */
+  :host::ng-deep .tooltip .tooltiptext {
+    visibility: hidden;
+    border: solid 1px #c4e7f6;
+    background-color: #0077be;
+    text-align: center;
+    padding: 20px;
+    border-radius: 6px;
+    width: 250px;
+    left: 135%;
+    top: -200%;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #fff;
+    margin-left: -60px;
+    position: absolute;
+    z-index: 1;
+  }
+  :host::ng-deep .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    margin-left: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: #0077be transparent transparent transparent;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  :host::ng-deep .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

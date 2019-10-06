@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        }
+    },
+    "title": "simpleForm",
+    "type": "object"
+}

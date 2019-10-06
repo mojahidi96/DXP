@@ -1,0 +1,13 @@
+<ng-container *ngFor="let nodes of node | lumenGroupNodes">
+    <div
+        *ngIf="nodes?.length"
+        class="uitNodeLayout__group"
+    >
+        <div
+            *ngFor="let iNode of nodes"
+            [ngStyle]="{order: (iNode.preferredOrder || 0)}"
+        >
+            <lumen-node [node]="iNode"></lumen-node>
+        </div>
+    </div>
+</ng-container>

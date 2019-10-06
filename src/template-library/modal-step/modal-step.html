@@ -1,0 +1,6 @@
+<div
+    class="buttons" *ngIf="!config.onLoad">
+
+  <button (click)="openConfirmDialog()"
+          class="uitConfirmModal__button">{{ config.title | lumenTranslate }}</button>
+</div>

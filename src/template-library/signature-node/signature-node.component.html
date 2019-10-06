@@ -1,0 +1,31 @@
+<mat-form-field class="uitSignatureNode">
+    <!--<mat-icon
+        (click)="reset()"
+        class="uitSignatureNode__reset"
+    >refresh</mat-icon>-->
+    <canvas
+        #sigCanvas
+        [ngClass]="{'uitSignatureNode__canvas--hidden': node.readOnly}"
+        class="uitSignatureNode__canvas"
+        matInput
+    ></canvas>
+    <img
+        *ngIf="node.readOnly"
+        [src]="node.value"
+        class="uitSignatureNode__image"
+    >
+    <input
+        [(ngModel)]="node.value"
+        [disabled]="node.readOnly"
+        [lumenValidateNode]="node"
+        [id]="node.fullName"
+        [max]="node.schema.maximum"
+        [min]="node.schema.minimum"
+        [name]="node.fullName"
+        [placeholder]="node.title | lumenTranslate"
+        [required]="node.required"
+        class="uitSignatureNode__input"
+        matInput
+    >
+    <mat-error>{{ node.validationMessage | lumenTranslate }}</mat-error>
+</mat-form-field>

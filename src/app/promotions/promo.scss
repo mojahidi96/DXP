@@ -1,0 +1,22 @@
+@import "variables";
+
+.rectangle {
+    width: 100%;
+    max-width: 100%;
+    min-height: 103px;
+    border: solid 1px mat-color($warning, 400);
+    background-color:mat-color($warning, 500);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display:flex;
+    align-items:center;
+    margin-top:30px;
+    span{
+        display: inline-block;
+        /*margin: 0 auto;*/
+        font-size:16px;
+        font-style:italic;
+        padding-left: 20px;
+        color: #fa9b1c;
+    }
+}

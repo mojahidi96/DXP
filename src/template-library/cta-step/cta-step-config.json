@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "ctas": {
+            "items": {
+                "properties": {
+                    "backgroundImage": {
+                        "title": "Background Image URL",
+                        "type": "string",
+                        "uiHint": "uri"
+                    },
+                    "description": {
+                        "title": "Description",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "internalnodeName": {
+
+                        "title": "Internal Node Name",
+                        "type": "string"
+                    },
+                    "value": {
+                        "dataProfileEnum": "1/internalnodeName",
+                        "title": "Value",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "label",
+                    "internalnodeName",
+                    "value"
+                ],
+                "title": "CTA",
+                "type": "object"
+            },
+            "title": "CTAs",
+            "type": "array"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        }
+    },
+    "required": [
+        "ctas"
+    ],
+    "title": "cta",
+    "type": "object"
+}

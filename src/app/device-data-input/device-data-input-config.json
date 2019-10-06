@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "channel":{
+            "title": "Channel",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub Title",
+            "type": "string"
+        },
+        "tagLine": {
+            "title": "Title Tag",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "currency": {
+            "title": "Currency",
+            "type": "string"
+        },
+        "dataNodeName":{
+            "title": "Data Object Path - To get value from",
+            "type": "string"
+        },
+        "setNode":{
+            "title": "Node Name - Set Form Value on Submit",
+            "type": "string"
+        },
+        "itemLabel":{
+            "title": "Item Label Node Name",
+            "type": "string"
+        },
+        "itemId":{
+            "title": "Item Id Node Name",
+            "type": "string"
+        },
+        "itemModel":{
+            "title": "Item Model Node Name",
+            "type": "string"
+        },
+        "itemPlaceHolder":{
+            "title": "Item Input Place Holder",
+            "type": "string"
+        },
+        "itemColor":{
+            "title": "Item Color Place Holder",
+            "type": "string"
+        },
+        "itemVariant":{
+            "title": "Item Variant Place Holder",
+            "type": "string"
+        },
+        "Components": {
+            "items": {
+                "properties": {
+                    "componentName": {
+                        "title": "Component Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "componentName"
+                ],
+                "title": "Component",
+                "type": "object"
+            },
+            "title": "Components",
+            "type": "array"
+        }
+    },
+    "title": "deviceDataInput",
+    "type": "object"
+}

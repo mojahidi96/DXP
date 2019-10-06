@@ -1,0 +1,18 @@
+<div class="app-container" appTheme>
+  <div class="header">
+      <header-comp [routeData]="routeData" ></header-comp>
+      <!--<button lumenPreviousLink>Back</button>-->
+  </div>
+  <div class="sidebar">
+    <sales-sidebar *ngIf="routeData?.sidebar"></sales-sidebar>
+  </div>
+  <section role="main" class="main"  id="main-section">
+    <!-- USE Router Outlet And Load Journey Component-->
+    <router-outlet></router-outlet>
+    <!-- USE Journey Component Directly -->
+    <!--<journey-comp></journey-comp>-->
+  </section>
+  <div class="footer">
+    <footer-comp></footer-comp>
+  </div>
+</div>

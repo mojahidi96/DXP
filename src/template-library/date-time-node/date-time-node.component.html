@@ -1,0 +1,40 @@
+
+<div class="dxp-form-group1" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+    <label><div class="dxp-label">{{ node.title | lumenTranslate }}<span class="mandatory" *ngIf="node.required">*</span></div>
+        <div class="dxp-input-group"> 
+
+     <input
+           [id]="node.fullName"
+           [(ngModel)]="node.value"
+           [lumenValidateNode]="node"
+           [placeholder]="node.title | lumenTranslate"
+           [required]="node.required"
+           [disabled]="node.readOnly"
+           #field="ngModel"
+           class="dxp-form-control"
+         >
+    
+    <input
+
+        [id]="node.fullName"
+        [owlDateTime]="dt1"
+        [hidden]='true'
+        (dateTimeInput)="setDate($event)"
+        [min]="min"
+    >
+    <div class="input-group-append">
+     <span class="input-group-text">
+         
+    <span class="trigger" [owlDateTimeTrigger]="dt1"><i class="ico-calendar" ></i></span>
+    <owl-date-time #dt1></owl-date-time>
+    </span>
+    </div>
+    
+    <em *ngIf="node.error && field.invalid && field.dirty && field.touched">{{ node.validationMessage | lumenTranslate }}</em>
+
+</div>
+    
+
+</label>
+
+</div>

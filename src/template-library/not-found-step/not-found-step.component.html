@@ -1,0 +1,11 @@
+<h2 style="color: red">
+    There is no step template with the specified name.
+</h2>
+<form (ngSubmit)="submit.emit()">
+    <lumen-node-layout [node]="rootNode"></lumen-node-layout>
+    <input
+        [disabled]="rootNode.validate()"
+        type="submit"
+        value="Submit"
+    >
+</form>

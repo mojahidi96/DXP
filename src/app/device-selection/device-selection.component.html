@@ -1,0 +1,192 @@
+<div class="p-30 pt-tablet-0">
+  <section class="form-section">
+    <div class="d-flex form-column-2">
+      <div class="form-input mr-20">
+        <label for="input2" class="font-strong">{{config.manufacturer}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedManufacturer}}</span></label>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="selectedDeviceSummary.selectedManufacturer"
+            (selectionChange)="onDeviceSelect($event.value)" disabled>
+            <mat-option *ngFor="let manufacture of mockDeviceData.deviceManufactureList" [value]="manufacture.title">
+              {{manufacture.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-input">
+        <label for="input1" class="font-strong">{{config.deviceType}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedDeviceType}}</span></label>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="selectedDeviceSummary.selectedDeviceType" disabled>
+            <mat-option *ngFor="let device of deviceList | removeRepeat :'category_Title'"
+              [value]="device.category?.category_Title" selected>
+              {{device.category?.category_Title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class=" mt-20">
+    </div>
+
+    <div class="d-flex form-column-2">
+      <div class="form-input">
+        <label for="input1" class="font-strong">{{config.model}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedDevice}}</span></label>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" [(ngModel)]="searchText" placeholder="Type device type" />
+          <button mat-button matSuffix mat-icon-button>
+            <i class="search"></i>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="mt-20">
+      <div class="search-tags-tablet">
+        <ul>
+          <li (click)="setDevice(device)"
+            [ngClass]="{'selected' :selectedDeviceSummary?.selectedDevice == device.deviceTitle}"
+            *ngFor="let device of deviceList | filter : searchText:'deviceTitle'">{{device.deviceTitle}}</li>
+        </ul>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </div>
+    <div class="clearfix"></div>
+
+
+    <div class="mt-30">
+      <div class="form-input">
+        <label for="input1" class="font-strong">{{config.color}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedDeviceColor}}</span></label>
+      </div>
+
+      <div class="selection-tags">
+        <ul class="colors">
+          <li (click)="setValue('color',color.colorName);selectedDeviceSummary.selectedDeviceColor = color.colorName"
+            [ngClass]="{'selected' :selectedDeviceSummary?.selectedDeviceColor == color.colorName}"
+            *ngFor="let color of mockDeviceData.colorList">
+            <span class="color-tag color-{{color.color}}"></span> {{color.colorName}}
+          </li>
+
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <!-- <div class="mt-30">
+      <div class="form-input">
+        <label for="input1" class="font-strong">{{config.storage}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedStorage}}</span></label>
+      </div>
+
+      <div class="selection-tags">
+        <ul>
+          <li *ngFor="let storage of mockDeviceData.storageList"
+            (click)="selectedDeviceSummary.selectedStorage = storage"
+            [ngClass]="{'selected' :selectedDeviceSummary?.selectedStorage == storage}">{{storage}}</li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div> -->
+
+
+    <div class="d-flex  form-column-2 mt-30">
+      <!-- <div class="form-input mr-20">
+        <label for="input1" class="font-strong">{{config.carrier}} <span
+            class="font-normal">{{selectedDeviceSummary.selectedCarrier}}</span></label>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Select" [(ngModel)]="selectedDeviceSummary.selectedCarrier">
+            <mat-option value="None" selected>Select</mat-option>
+            <mat-option *ngFor="let carrier of mockDeviceData.carrierList" [value]="carrier"> {{carrier}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div> -->
+      <div class="form-input">
+        <label for="input2" class="font-strong">{{config.deviceCondition}} <span
+            class="font-normal">{{selectedDeviceSummary?.selectedDeviceConditionName}}</span>
+          <div class="filter-icon"> <img class="tooltip__img" [src]="imageUrl.value" width="21" height="21" />
+            <div class="popover__content">
+              <!-- <p class="popover__message"><span class="font-strong">Working</span><span class="font-normal"> <br>It
+                  turns on and <br>There is no
+                  battery damaged and <br> The screen isn't cracked or broken</span></p>
+              <p class="popover__message"><span class="font-strong">Damaged</span> <span class="font-normal"><br>It
+                  won't turn on or <br>There's
+                  battery damaged or <br>The screen is cracked or broken</span></p> -->
+              <div [innerHtml]="config.infoDescription"></div>
+            </div>
+          </div>
+        </label>
+
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Device Condition" [(ngModel)]="selectedDeviceSummary.selectedDeviceConditionName"
+            (selectionChange)="onSelectCondition($event.value)" [disabled]="!selectedDevice?.devicePriceList">
+            <mat-option *ngFor="let price of selectedDevice?.devicePriceList" [value]="price.conditionName">
+              {{price.conditionName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div class="d-flex flex-inline mt-30" *ngIf="selectedDeviceSummary?.selectedDeviceConditionName==deviceCondition">
+      <div class="form-input mr-20">
+        <label for="input1" class="font-strong">{{config.deviceConditionQuestion1}}</label>
+        <div class="selection-tags">
+          <ul>
+            <li (click)="selectedDeviceSummary.damagedQuesAns1 = isDamage"
+              [ngClass]="{'selected' :selectedDeviceSummary?.damagedQuesAns1 == isDamage}"
+              *ngFor="let isDamage of isDeviceDamagedList1">{{isDamage}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-input">
+        <label for="input2" class="font-strong">{{config.deviceConditionQuestion2}} </label>
+        <div class="selection-tags">
+          <ul>
+            <li (click)="selectedDeviceSummary.damagedQuesAns2 = isDamage"
+              [ngClass]="{'selected' :selectedDeviceSummary?.damagedQuesAns2 == isDamage}"
+              *ngFor="let isDamage of isDeviceDamagedList2">{{isDamage}}</li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="mt-30">
+      <div class="d-flex service-selection">
+        <div class="form-input fit_content">
+          <label for="input1" class="font-strong photo-margin">{{config.photoFront}}</label>
+        </div>
+        <div class="form-input">
+          <label for="input1" class="font-strong">{{config.photoBack}}</label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="d-flex">
+        <lumen-node-layout [node]="getNode()"></lumen-node-layout>
+      </div>
+    </div>
+  </section>
+
+  <div class="trade-value">
+    <h3>{{config.tradeInValue}}</h3>
+    <div class="d-flex align-items-start trade-price">
+      <sup>{{selectedDevicePriceObject?.currency }}</sup>
+      <sup class="price font-strong">{{selectedDevicePriceObject?.priceValue}}</sup>
+      <sup>{{selectedDevicePriceObject?.decimalValue }}</sup>
+    </div>
+  </div>
+  <div class="mt-30">
+    <!-- Used cancelLabel for return policy label will change later -->
+    <lumen-node [node]="getSignaturePadNode()"></lumen-node>
+    <mat-checkbox color="primary" [(ngModel)]="selectedDeviceSummary.agreeToReturnPolicy">
+      <span [innerHtml]="config.cancelLabel"></span></mat-checkbox>
+  </div>
+
+  <div class="button-row mt-30">
+    <button class="dxp_Btn btn-primary"
+      [disabled]="!selectedDeviceSummary.selectedDevice || !selectedDeviceSummary.agreeToReturnPolicy || signaturePadNode.value == null"
+      (click)="onSubmit()">{{submitLabel}}</button>
+  </div>
+</div>

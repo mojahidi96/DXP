@@ -1,0 +1,6 @@
+<h1 *ngIf="config.title">{{ config.title | lumenTranslate }}</h1>
+<h2 *ngIf="config.subTitle">{{ config.subTitle | lumenTranslate }}</h2>
+<form (ngSubmit)="submitForm()">
+    <lumen-node-layout [node]="rootNode"></lumen-node-layout>
+    <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary" type="submit" [disabled]="rootNode.validate() || sending">{{ config.submitLabel | lumenTranslate }}</button>
+</form>

@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "type": "string"
+        },
+        "titleImage": {
+            "title": "Title Image",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "subTitle1": {
+            "title": "subTitle1",
+            "type": "string"
+        },
+        "subTitle2": {
+            "title": "subTitle2",
+            "type": "string"
+        },
+        "subTitle3": {
+            "title": "subTitle3",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "currency": {
+            "title": "Currency",
+            "type": "string"
+        },
+        "cmsUrl":{
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "isContentRequired":{
+            "title": "Is Content Required(YES/NO)",
+            "type": "string"
+        },
+        "Components": {
+            "items": {
+                "properties": {
+                    "componentName": {
+                        "title": "Component Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "componentName"
+                ],
+                "title": "Component",
+                "type": "object"
+            },
+            "title": "Components",
+            "type": "array"
+        }
+    },
+    "title": "summary",
+    "type": "object"
+}

@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "selectedNode":{
+            "title": "Set Selected Object - Node Array Name",
+            "type": "string"
+        },
+        "tradeNode":{
+            "title": "Set TradeNode Object - Node Property Name",
+            "type": "string"
+        },
+        "cmsUrl":{
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "infoLabel":{
+            "title": "Info Label",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "getVal": {
+                        "title": "Get Value From",
+                        "type": "string"
+                    },
+                    "setVal": {
+                        "title": "Set Above Value to Key",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "keyName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "shoppingCart",
+    "type": "object"
+}

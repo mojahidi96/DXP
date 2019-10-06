@@ -1,0 +1,114 @@
+<header class="app-header">
+	<div class="d-flex">
+    	<div class="header-info">
+        	<div class="brand d-flex align-items-center">
+                <button mat-button (click)="menuSlider = !menuSlider" *ngIf="!routeData?.headerDisp"><img src="assets/images/menu.png"/></button>
+                <div class="logo" (click)="restart()"></div>
+                <h3 class="font-strong">{{currentSelection | titlecase}}</h3>
+            </div>
+        </div>
+
+    <mat-form-field class="dropdown" *ngIf="!routeData?.headerDisp">
+      <mat-label>Select App Engine</mat-label>
+      <mat-select [(value)]='defaultAppEngine'>
+        <mat-option
+          *ngFor="let item of appEngineList;index as i"
+          [value]="item?.id || defaultAppEngine" (click)="setAppEngine(item)">
+          {{item?.id}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="select-dropdown" *ngIf="!routeData?.headerDisp">
+    <div class="dxp-select-group">
+      <label class ="font-strong"> Select App Theme </label>
+      <ng-select [items]="themes"
+                 bindLabel="colors"
+                 placeholder="Select App Theme"
+                 [(ngModel)]="selectedTheme"
+                 (click)="setTheme(selectedTheme)">
+      </ng-select>
+    </div>
+    </div>
+
+
+
+
+        <!--<div class="header-links d-flex justify-content-end" *ngIf="!routeData?.headerDisp">
+            &lt;!&ndash;Dropdown Menu&ndash;&gt;
+            <div class="fusion-main-menu" style="">
+                <ul class="fusion-menu">
+                    <li class="menu-item">
+                        <a style="line-height: 32px; height: 48px;">
+                            <span class="menu-text">Demo Journeys</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a (click)="routeToFeature('broadband');"><span class="">Press Releases</span></a></li>
+                            <li><a><span class="">Events</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+        <div class="header-links d-flex justify-content-end" *ngIf="routeData?.headerDisp">
+            <button mat-button><i class="search"></i></button>
+            <button mat-button (click)="shoppingCart()" *ngIf="quantity > 0"><i class="shopping-cart"><div class="countBuble">{{quantity}}</div></i></button>
+            <a class="insights" *ngIf="isInsights" mat-button href="{{insightUI}}" target="_blank" ><i class="barchart"></i></a>
+            <button mat-button><i class="settings"></i></button>
+            <button mat-button (click)="logoutClick()"><i class="logout"></i></button>
+        </div>
+    </div>
+
+    <!--slider HTML-->
+    <div class="menuSlider" [ngClass]="{'open': menuSlider}">
+        <div class="close">
+            <button mat-button (click)="menuSlider = !menuSlider"><i class="x"></i></button>
+        </div>
+        <div class="marT-50">
+            <a href="#" (click)="routeToFeature('broadband'); menuSlider = !menuSlider ">
+                <img src="assets/images/dashboard/bb-activation@2x.png" class="icons"/>
+                <div class="titleText">Broadband Services</div>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="marT-30">
+            <a href="#" (click)="routeToFeature('market'); menuSlider = !menuSlider">
+                <img src="assets/images/dashboard/marketplace-sm@2x.png" class="icons"/>
+                <div class="titleText">Marketplace</div>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="marT-30">
+            <a href="#" (click)="routeToFeature('wireless'); menuSlider = !menuSlider">
+                <img src="assets/images/dashboard/marketplace_mobile@2x.png" class="icons"/>
+                <div class="titleText top16">Wireless Activation</div>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="marT-30">
+            <a href="#" (click)="routeToFeature('tradein'); menuSlider = !menuSlider">
+                <img src="assets/images/dashboard/trade-in-sm.png" class="icons"/>
+                <div class="titleText top16">Trade In</div>
+            </a>
+        </div>
+
+      <div class="clearfix"></div>
+      <div class="marT-30">
+        <a  href="https://digitalhome.dxpdevops.dev.cloud.synchronoss.net/" target="_blank">
+          <img src="assets/images/dashboard/DigitalHome-menu-icon.png" class="icons"/>
+          <div class="titleText top16">Digital-Home</div>
+        </a>
+      </div>
+
+
+      <div class="clearfix"></div>
+      <div class="marT-30">
+        <a  href="https://estore.dxpdevops.dev.cloud.synchronoss.net/" target="_blank">
+          <img src="assets/images/dashboard/cart-menu-icon.png" class="icons"/>
+          <div class="titleText top16">EStore</div>
+        </a>
+      </div>
+
+    </div>
+    <!--slider HTML End-->
+</header>

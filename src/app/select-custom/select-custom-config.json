@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+      "cancelLabel": {
+        "title": "Cancel Label",
+        "type": "string"
+      },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "respJsonPath": {
+            "title": "Response Node Name",
+            "type": "string"
+        },
+        "cmsUrl":{
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "selectedNode":{
+            "title": "Set Selected Object - Node Array Name",
+            "type": "string"
+        },
+        "currency":{
+            "title": "Currency Code",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "getVal": {
+                        "title": "Get Value",
+                        "type": "string"
+                    },
+                    "setVal": {
+                        "title": "Set Value",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "getVal",
+                    "setVal"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "selectCustom",
+    "type": "object"
+}

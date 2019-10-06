@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "submitLabel": {
+      "title": "Submit Label",
+      "type": "string"
+    },
+    "cancelLabel": {
+      "title": "Cancel Label",
+      "type": "string"
+    },
+    "Components": {
+      "items": {
+        "properties": {
+          "componentName": {
+            "title": "Component Name",
+            "type": "string"
+          },
+          "componentTitle": {
+            "title": "Component Title",
+            "type": "string"
+          },
+          "componentSubTitle": {
+            "title": "Component Sub-title",
+            "type": "string"
+          },
+          "componentSelectionNode":{
+            "title": "Component Selection Node",
+            "type": "string"
+          },
+          "componentResponseNode":{
+            "title": "Component Response Node",
+            "type": "string"
+          },
+          "position":{
+            "title":"Component Position",
+            "type": "number"
+          },
+          "fields":{
+            "items":{
+              "properties":{
+                "propertyName":{
+                  "title":"Property Name",
+                  "type":"string"
+                },
+                "propertyValue":{
+                  "title":"Property Value",
+                  "type":"string"
+                }
+              },
+              "required":[
+                "label",
+                "value"
+              ],
+              "title":"Fields",
+              "type":"object"
+            },
+            "title":"fields",
+            "type":"array"
+          }
+        },
+        "required": [
+          "componentName"],
+        "title": "Component",
+        "type": "object"
+      },
+      "title": "Components",
+      "type": "array"
+    }
+
+  },
+  "title": "sectionalTemplate",
+  "type": "object"
+}

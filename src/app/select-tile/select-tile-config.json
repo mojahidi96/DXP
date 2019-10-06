@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "displayType": {
+            "title": "Template Type",
+            "type": "string",
+            "enum": [
+                "single",
+                "compare"
+            ]
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+        "cancelLabel": {
+            "title": "Cancel Label",
+            "type": "string"
+        },
+        "tileSelect": {
+            "title": "Tile Select Label",
+            "type": "string"
+        },
+        "listHeader": {
+            "title": "List Header",
+            "type": "string"
+        },
+        "responseQuery": {
+            "title": "Response Node Name",
+            "type": "string"
+        },
+        "childNodeName":{
+            "title": "Compare List Node Name",
+            "type": "string"
+        },
+        "selectedNode":{
+            "title": "Set Selected Object - Node Array Name",
+            "type": "string"
+        },
+        "currency":{
+            "title": "Currency Code",
+            "type": "string"
+        },
+        "cmsUrl":{
+            "title": "CMS Url",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "getVal": {
+                        "title": "Get Value From",
+                        "type": "string"
+                    },
+                    "setVal": {
+                        "title": "Set Value To",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                  "getVal",
+                  "setVal"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "selectTile",
+    "type": "object"
+}

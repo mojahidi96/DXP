@@ -1,0 +1,29 @@
+<section>
+    <div class="billing-details">
+        <div class="billing-row d-flex column-2 font-strong" *ngIf="data.CommonFields.OrderInformation.totalOneTimeCharge">
+            <div class="billing-column">One time charges</div>
+            <div class="billing-column text-right">{{data.CommonFields.OrderInformation.totalOneTimeCharge | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+        <div class="billing-row d-flex column-2 font-strong" *ngIf="data.CommonFields.OrderInformation.totalMonthlyCharges">
+            <div class="billing-column">Monthly Total</div>
+            <div class="billing-column text-right">{{data.CommonFields.OrderInformation.totalMonthlyCharges | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+        <div class="billing-row d-flex column-2 font-strong" *ngIf="data.CommonFields.OrderInformation.total && tax > 0">
+            <div class="billing-column">Total</div>
+            <div class="billing-column text-right">{{data.CommonFields.OrderInformation.total | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+        <div class="billing-row d-flex column-2 font-strong" *ngIf="tax > 0">
+            <div class="billing-column">Tax</div>
+            <div class="billing-column text-right">{{tax | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+        <div class="billing-row d-flex column-2 font-strong text-red" *ngIf="data?.CommonFields?.OrderInformation?.TradeInValue > 0">
+            <div class="billing-column">Trade-In value</div>
+            <div class="billing-column text-right">-{{data?.CommonFields?.OrderInformation?.TradeInValue | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+        
+        <div class="billing-row d-flex column-2 font-strong bill-total" *ngIf="data.CommonFields.OrderInformation.grandTotal">
+            <div class="billing-column">Grand Total</div>
+            <div class="billing-column text-right">{{(data.CommonFields.OrderInformation.grandTotal) | currency:data?.CommonFields?.CurrencyType:'symbol'}}</div>
+        </div>
+    </div>
+</section>

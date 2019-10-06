@@ -1,0 +1,21 @@
+.device {
+    display: inline-flex;
+
+    .device-image {
+        img {
+            height: 150px;
+        }
+    }
+
+    .device-detail {
+
+        .est-trade-value,
+        .device-price {
+            color: orange;
+            font-weight: bold;
+            font-size: 1.0rem;
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+}

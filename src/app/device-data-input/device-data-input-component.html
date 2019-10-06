@@ -1,0 +1,49 @@
+<div class="container" insights [rootNode]="rootNode">
+    <ng-container *ngFor="let component of config.Components">
+        <uiconfig-node [config]="config" [loadComponent]="component.componentName" [node]="rootNode"
+                       [data]="data"></uiconfig-node>
+    </ng-container>
+  <h2 class="page-heading mt-30">{{config.title}}</h2>
+  <p class="required-text marT5">{{config.tagLine}}</p>
+        <form class="example-form" #deviceForm="ngForm" (ngSubmit)="submitForm()" novalidate>
+          <section class="form-section">
+            <div class="d-flex form-column-2">
+                <ng-container *ngFor="let item of dataItems; let xx = index">
+                    <ng-container *ngFor="let count of  ' '.repeat(+item.itemQuantity).split(''); let i = index;">
+                        <div class="dxp-form-group" [ngClass]="{'has-error': field.invalid && field.dirty && field.touched}">
+                          <label [for]="item[config.itemId]">
+                            <div class="dxp-label">
+                            {{item[config.itemLabel]}} {{item[config.itemColor]}} {{item[config.itemVariant]}}
+                              <span class="mandatory" >*</span>
+                          </div>
+
+                            <input
+                                   [(ngModel)]="item[config.itemModel][i]"
+                                   [id]="item[config.itemId]+i"
+                                   [name]="item[config.itemId]+i"
+                                   [placeholder]="config.itemPlaceHolder"
+                                   required="true"
+                                   type="text"
+                                   minlength="10" maxlength="15"
+                                   #field="ngModel"
+                                   class="dxp-form-control"
+                            >
+
+                          </label>
+
+
+                          <a *ngIf="config.channel" (click)="captureBarCode(i,xx)">Scan serial number/barcode</a>
+                      </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+          </section>
+
+          <div class="marT10 marB20">
+            <button *ngIf="config.cancelLabel" class="dxp_Btn btn-stroked marR20">{{config.cancelLabel}}</button>
+            <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary" type="submit" [disabled]="!deviceForm.form.valid" >{{config.submitLabel}}</button>
+          </div>
+
+        </form>
+
+</div>

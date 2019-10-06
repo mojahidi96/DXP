@@ -1,0 +1,185 @@
+@import 'variables';
+
+.container {
+    padding: 20px 30px;
+
+    .tableResponsive {
+        overflow-x: auto;
+        max-width: 950px;
+        .table {
+            border: none;
+            width: 100%;
+            td {
+                border: none;
+                padding: 0px 10px;
+                line-height: 22px;
+            }
+        }
+
+    }
+
+}
+
+.form-section-title {
+    border-bottom: 1px solid #727272;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.height45 {
+    height: 45px;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.padL30 {
+    padding-left: 30px;
+}
+
+.padR0 {
+    padding-right: 0px !important;
+}
+
+.padL0 {
+    padding-left: 0px !important;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.marT50 {
+    margin-top: 50px;
+}
+
+.marB30 {
+    margin-bottom: 30px;
+}
+
+.flexRow {
+    display: flex;
+    .col1 {
+        align-self: flex-start;
+        flex-shrink: 0;
+        width: 48%;
+    }
+    .col2 {
+        align-self: flex-end;
+        flex-shrink: 0;
+        width: 51%;
+    }
+
+    .colin1 {
+        align-self: flex-start;
+        flex-shrink: 0;
+        width: 47%;
+    }
+    .colin2 {
+        align-self: flex-end;
+        flex-shrink: 0;
+        width: 53%;
+        flex-wrap: wrap;
+        overflow-wrap: break-word;
+    }
+
+}
+
+.flexRow1 {
+    display: flex;
+    .col1 {
+        align-self: flex-start;
+        width: 48%;
+        flex-shrink: 0;
+    }
+    .col2 {
+        align-self: flex-start;
+        width: 47%;
+        margin-left: 32px;
+        flex-shrink: 0;
+    }
+}
+
+.billing-details{
+    .billing-row{
+        background-color: #f5f9fc;
+        border: 1px solid #eaeaea;
+
+        .billing-column{
+            padding:10px;
+            img{
+                vertical-align:middle;
+                float:left;
+                margin-right:20px;
+            }
+        }
+        .deviceDescription{
+            word-wrap:break-word;
+            width: 250px;
+            margin-left: 15px;
+        }
+
+        &.bill-total{
+            background-color: #d7eafa;
+            border-color: #d7eafa;
+        }
+    }
+}
+
+.column-2 {
+    flex-wrap: wrap;
+
+    & > div {
+        flex: 2 0 calc(20% - 40px);
+    }
+}
+
+.column-2-big {
+    flex-wrap: wrap;
+
+    &.imageColumn {
+        flex: 0 0 calc(10% - 40px);
+    }
+    &.deviceDescription{
+        flex: 0 0 calc(50% - 40px)!important;
+
+    }
+    &.billing-column{
+        flex: 0 0 calc(28% - 40px);
+    }
+    &.billing-column1{
+        flex: 0 0 calc(10% - 40px);
+    }
+    #priceText{
+        flex: 1 0 calc(28% - 40px);
+        padding-right:10px;
+    }
+}
+
+.column-2-small {
+    flex-wrap: wrap;
+
+    & > div {
+        flex: 0 0 calc(20% - 40px);
+    }
+}
+
+.button-row {
+    display: block;
+    button {
+        &:last-child {
+            float: right;
+        }
+    }
+}
+
+.title-img{
+    height: 54px;
+}
+.order-title{
+    margin-left: 80px;
+}
+.trade-device{
+    color: #e0524d;
+}

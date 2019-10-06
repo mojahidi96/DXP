@@ -1,0 +1,17 @@
+<div class="container" insights [rootNode]="rootNode">
+        <div class="container">
+                <h2 class="page-heading mt-30">{{config.title}}</h2>
+                <div [innerHTML]="config.subTitle"> {{config.subTitle}}</div>                
+                <ng-container *ngFor="let component of config.Components">
+                        <uiconfig-node [config]="config" [loadComponent]="component.componentName" [node]="rootNode" [data]="data"></uiconfig-node>
+                </ng-container>
+                <div class="mt-10"></div>
+                <mat-divider></mat-divider>
+                <p><b>Please Note:</b> {{config.infoLabel}}</p>
+                <div class="mt-20"></div>
+                <div class="example-button-row marT40 marB30">
+                        <div class="clearfix"></div>
+                        <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary marL20 pull-left" (click)="submitForm()">{{submitLabel}}</button>
+                </div>
+            </div>
+    </div>

@@ -1,0 +1,101 @@
+<style>
+    .text-ellipsis {
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+    }
+</style>
+<div class="p-30" insights [rootNode]="rootNode">
+
+    <div class="d-flex device-selection">
+        <div class="filter d-flex align-items-center" (click)="onFilterClick()" [ngClass]="{'filter-clicked': modalOpened}">
+            <div class="filter-icon mr-20">
+            </div>
+            <div class="filter-text mr-20">
+                Filter
+            </div>
+            <div class="filter-arrow-icon">
+                <i class="caret"></i>
+            </div>
+        </div>
+
+        <div class="filter-modal" [ngClass]="{'modal-opened': modalOpened}">
+            <div class="d-flex">
+                <div class="filter-column" *ngFor="let filter of filters">
+                    <p class="font-strong">{{filter.filterName}}</p>
+                    <div class="checkbox-group checkbox-vertical">
+                        <mat-checkbox class="checkbox-button"
+                                      [value]="info.checked" (change)="onChangeEvent($event, info)"
+                                      *ngFor="let info of filter.FilterList" [checked]="info.checked">{{info.filterTitle}}</mat-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex filter-modal-footer">
+                <button class="dxp_Btn btn-stroked" (click)="clear()">Clear</button>
+                <button class="dxp_Btn btn-primary" (click)="filterProductList()" [disabled]="!(choosenFilter.length > 0)">Filter</button>
+            </div>
+        </div>
+
+        <!-- TODO
+        <div class="filter-header ml-auto">
+            <button mat-button><i class="list-view"></i></button>
+            <button mat-button><i class="tile-view-solid"></i></button>
+        </div>-->
+        <!--<div class="device-selection-controls">
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="selectedPartner" required placeholder="Partners" (selectionChange)="filterProducts($event)">
+                    <mat-option>&#45;&#45; None &#45;&#45;</mat-option>
+                    <mat-option *ngFor="let partner of partners" [value]="partner.baseId">{{partner.keyName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="selectedCategory" required placeholder="Product Type" (selectionChange)="filterProducts($event)">
+                    <mat-option>&#45;&#45; None &#45;&#45;</mat-option>
+                    <mat-option *ngFor="let category of categories" [value]="category.baseId">{{category.keyName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="selectedSort" required placeholder="Lowest price" (selectionChange)="sortProducts()">
+                    <mat-option  [value]="true">Lowest price</mat-option>
+                    <mat-option  [value]="false">Highest price</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="filter-header ml-auto">
+            &lt;!&ndash;<button mat-button><i class="list-view"></i></button>
+            <button mat-button><i class="tile-view-solid"></i></button>&ndash;&gt;
+        </div>-->
+    </div>
+
+    <div class="mt-40 devices-list" *ngIf="(productList && productList.length > 0); else noData">
+        <mat-card class="device" (click)="displayProductDetails(product)" *ngFor="let product of productList">
+
+           <div class="productImg">
+            <img mat-card-image [src]="getImage(product)" class="img-fluid" alt="Device">
+           </div>
+
+            <mat-card-content>
+                <h4 class="device-name font-strong">{{product.productName}}</h4>
+                <h3 class="device-price font-strong">{{product.price | currency:data?.CommonFields?.CurrencyType:'symbol'}}</h3><!--<sup class="font-normal">00</sup>-->
+                <div class="device-description text-ellipsis">
+                    {{product.shortDescription}}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <ng-template #noData>
+        <div class="mt-40 devices-list">
+            <h3 class="device-price font-strong">No Data Found.</h3>
+        </div>
+    </ng-template>
+
+</div>
+
+<product-details [active]="active" [details]="details" [rootNode]="rootNode" [config]="config" [data]="data" ></product-details>

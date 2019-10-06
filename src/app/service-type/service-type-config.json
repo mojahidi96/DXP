@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "subTitle": {
+            "title": "Sub-Title",
+            "type": "string"
+        },
+        "submitLabel": {
+            "title": "Submit Label",
+            "type": "string"
+        },
+      "cancelLabel": {
+        "title": "Cancel Label",
+        "type": "string"
+      },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "progressTitle": {
+            "title": "Progress Title",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "defaultImage": {
+                        "title": "Default Image Background URL",
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "selectedImage": {
+                        "title": "Selected Image Background URL",
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "selectedField": {
+                        "title": "Selected Node Name",
+                        "type": "string",
+                      "format": "node-name"
+                    },
+                    "dataNodeName": {
+                        "title": "Response Node Name",
+                        "type": "string"
+                    },
+                    "value": {
+                        "dataProfileEnum": "1/nodeName",
+                        "title": "Value",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "label",
+                    "nodeName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+        "title": "Fields",
+        "type": "array"
+        }
+    },
+    "title": "serviceType",
+    "type": "object"
+}

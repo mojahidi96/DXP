@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline">
+    <input matInput
+           [id]="node.fullName"
+           [placeholder]="node.title | lumenTranslate"
+           [ngModel]="node.value"
+           [value]="ssn"
+           [lumenValidateNode]="node"
+           [required]="node.required"
+           [disabled]="node.readOnly"
+           (keyup)="setSsnNumber($event)"
+           oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+    >
+    <mat-error>{{ node.validationMessage | lumenTranslate }}</mat-error>
+</mat-form-field>

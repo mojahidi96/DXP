@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "onLoad":{
+            "type":"boolean"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "message": {
+            "message": "Message",
+            "type": "string"
+        },
+        "modalType": {
+            "modalType": "modalType",
+            "type": "string",
+            "enum": ["alert", "confirm", "input"]
+        },
+        "cancelLabel": {
+            "cancelLabel": "No",
+            "type": "string"
+        },
+        "confirmLabel": {
+            "confirmLabel": "Yes",
+            "type": "string"
+        },
+        "fields": {
+            "items": {
+                "properties": {
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "nodeName": {
+                        "uiHint": "node-name",
+                        "title": "Node Name",
+                        "type": "string"
+                    },
+                    "value": {
+                        "dataProfileEnum": "1/nodeName",
+                        "title": "Value",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "label",
+                    "nodeName",
+                    "value"
+                ],
+                "title": "Field",
+                "type": "object"
+            },
+            "title": "Fields",
+            "type": "array"
+        }
+    },
+    "title": "modal",
+    "type": "object"
+}

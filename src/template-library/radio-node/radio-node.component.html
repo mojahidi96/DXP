@@ -1,0 +1,35 @@
+<ng-container *ngIf="!node.schema.enum; else radioEnum">
+    <div class="radioHorizontalField">
+       <div>{{node.title | lumenTranslate}}</div>
+        <ng-container class="radio-button">
+            <div class="radioList booleanFlex">
+                <label class="container">
+                    <input type="radio" [(ngModel)]="node.value" [lumenValidateNode]="node" [id]="'yes'" [name]="node.fullName"
+                        value="true" />
+                    Yes
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">
+                    <input type="radio" [(ngModel)]="node.value" [lumenValidateNode]="node" [id]="'no'" [name]="node.fullName"
+                        value="false" />
+                    No
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
+<ng-template #radioEnum>
+    <div class="radioVerticalField">
+        <ng-container *ngFor="let option of node.schema.enum" class="radio-button">
+            <div class="radioList">
+                <label class="container">
+                    <input type="radio" [(ngModel)]="node.value" [lumenValidateNode]="node" [id]="node.fullName" [name]="node.fullName"
+                        [value]="option" [required]="node.required" [disabled]="node.readOnly" />
+                    {{option}}
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </ng-container>
+    </div>
+</ng-template>

@@ -1,0 +1,37 @@
+// @import '../resources/styles/sncr.scss';
+@import "variables";
+
+
+.width-80{
+    width: 80%;
+}
+
+.text-right{
+    text-align: right;
+}
+
+
+.billing-details{
+    margin-top: 20px;
+    .billing-row{
+        background-color: #f5f9fc;
+        border: 1px solid #eaeaea;
+
+        .billing-column{
+            padding: 20px;
+        }
+
+        &.bill-total{
+            background-color: #d7eafa;
+            border-color: #d7eafa;
+        }
+    }
+}
+
+.column-2{
+    flex-wrap: wrap;
+
+    & > div{
+        flex: 0 0 calc(50% - 40px);
+    }
+}

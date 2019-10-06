@@ -1,0 +1,153 @@
+<div class="p-30" insights [rootNode]="rootNode">
+
+    <progress-bar [rootNode]="rootNode" [config]="config"></progress-bar>
+
+    <form #customForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <ng-container *ngFor="let custom of customizations; let i = index">
+
+            <!--
+        TEMPLATE 1
+        Radio Template display from choices.
+        -->
+            <div class="modem-selection" *ngIf="custom.customType === 'SELECTION'">
+                <h2 class="page-heading">
+                    <span class="font-strong">{{custom.title}}</span>
+                    <!--({{custom.customDesc}})-->
+                </h2>
+                <h3 class="form-section-title font-strong">{{custom.customDesc}}</h3>
+
+                <div class="modem-box">
+                    <mat-radio-group class="modem-radio-group" name="radios{{i}}" [required]="custom.mandatory"
+                        [(ngModel)]="custom.selected">
+                        <mat-radio-button name="radios{{i}}" class="modem-radio-button" [value]="choice"
+                            (change)="onChangeRadio(choice, i)" *ngFor="let choice of custom.choices">
+                            <span class="modem-name">{{choice.selection}}</span>
+                            <span
+                                *ngIf="choice.choiceMonthlyPrice && choice.choiceMonthlyPrice !== '0'">{{ choice.choiceMonthlyPrice | currency:config.currency:'symbol'}}
+                                {{' per month'}}</span>
+                            <span
+                                *ngIf="choice.choiceOnetimePrice && choice.choiceOnetimePrice !== '0'">{{ choice.choiceOnetimePrice | currency:config.currency:'symbol'}}
+                                {{' one time'}}</span>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <!--
+        TEMPLATE 2
+        CHECKBOX Template display for FREE Choice
+        -->
+            <ng-container *ngIf="custom.customType === 'FREE'">
+                <section class="section">
+                    <h3 class="form-section-title font-strong">{{custom.title}}</h3>
+                    <div class="row">
+                        <mat-checkbox class="col1" color="primary">
+                            {{custom.customDesc}}
+                        </mat-checkbox>
+                        <div class="col2 font-strong">FREE</div>
+                    </div>
+                    <div class="d-flex column-2" *ngFor="let choice of custom.choices">
+                        <div class="col padR30">
+                            <div class="innerSection padL30">
+                                <img src="../../assets/hbo@2x.png" class="img1" />
+                                <p>{{choice.choiceDesc}}</p>
+                            </div>
+                            <div class="innerSection padL30">
+                                <img src="../../assets/starz@2x.png" class="img1" />
+                                <p>{{choice.choiceDesc}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!--
+        TEMPLATE 3
+        CHECKBOX Template display for Choices to be paid
+        -->
+            <ng-container *ngIf="custom.customType === 'CHECKBOX'">
+                <h2 class="page-heading mt-30">{{custom.customDesc}}</h2>
+                <section class="section">
+                    <h3 class="form-section-title font-strong">{{custom.title}}</h3>
+                    <div class="d-flex column-2" *ngFor="let choice of custom.choices">
+                        <div class="col padR30">
+                            <div class="innerSection">
+                                <mat-checkbox [required]="false" [name]="choice.choiceDesc"
+                                    [(ngModel)]="choice.selected" class="col1" color="primary"
+                                    (change)="onChangeCheckBox(choice)">{{choice.selection}}</mat-checkbox>
+                                <p class="padL30">{{choice.choiceDesc}}</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="innerSection">
+                                <img src="{{config.cmsUrl}}{{choice.choiceImage}}" class="img2" />
+                                <p class="pull-right text-right mt-10">
+                                    <span *ngIf="choice.choiceMonthlyPrice && choice.choiceMonthlyPrice !== '0'"
+                                        class="font-strong">{{ choice.choiceMonthlyPrice | currency:config.currency:'symbol'}}
+                                        {{' per month'}}</span>
+                                    <span *ngIf="choice.choiceOnetimePrice && choice.choiceOnetimePrice !== '0'"
+                                        class="font-strong">{{ choice.choiceOnetimePrice | currency:config.currency:'symbol'}}
+                                        {{' one time'}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+
+            <!--
+        TEMPLATE 4
+        Select BOX Display for Type customization type LIST
+        -->
+            <ng-container *ngIf="custom.customType === 'LIST'">
+                <section class="section">
+                    <div class="d-flex form-column-2">
+                        <div>
+                            <h2 class="page-heading mt-30">{{custom.customDesc}}</h2>
+                            <div class="form-input mat-width-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-select placeholder="{{custom.title}}"
+                                        (selectionChange)="onChangeSelect($event)" [required]="custom.mandatory"
+                                        [(ngModel)]="custom.selected" name="customSelect">
+                                        <mat-option [value]="choice" *ngFor="let choice of custom.choices">
+                                            {{choice.selection}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <span *ngIf="selectOption"><b>Cost:</b>
+                                    <ng-container
+                                        *ngIf="selectOption.choiceMonthlyPrice && selectOption.choiceMonthlyPrice != '0' && selectOption.choiceMonthlyPrice != '0.00'">
+                                        {{selectOption.choiceMonthlyPrice | currency:config.currency:'symbol'}}
+                                        {{'per month'}}
+                                    </ng-container>
+                                    <ng-container
+                                        *ngIf=" selectOption.choiceOnetimePrice && selectOption.choiceOnetimePrice != '0'">
+                                        {{selectOption.choiceOnetimePrice | currency:config.currency:'symbol'}}
+                                        {{'one time'}}
+                                    </ng-container>
+                                    <ng-container
+                                        *ngIf="selectOption.choiceOnetimePrice && selectOption.choiceMonthlyPrice  && selectOption.choiceOnetimePrice == '0' && selectOption.choiceMonthlyPrice == '0'">
+                                        {{selectOption.choiceDesc}}
+                                    </ng-container>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="ml-auto">
+                            <img src="{{config.cmsUrl}}{{custom.customImage}}" class="mt-30" />
+                        </div>
+
+                    </div>
+                </section>
+            </ng-container>
+
+        </ng-container>
+
+        <div class="marT20">
+            <button *ngIf="config.cancelLabel" class="dxp_Btn btn-stroked marR20">{{config.cancelLabel}}</button>
+            <button *ngIf="config.submitLabel" class="dxp_Btn btn-primary" [insights]="true" [DataEvent]="selectedValue" [rootNode]="rootNode"
+                type="submit" [disabled]="!customForm.form.valid">{{config.submitLabel}}</button>
+        </div>
+    </form>
+
+</div>

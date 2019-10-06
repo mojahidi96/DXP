@@ -1,0 +1,96 @@
+<div class="product-details" [ngClass]="{'open': active}">
+    <ng-container *ngIf="details">
+    <div class="product-name">
+        {{details.productName}}
+        <div class="close">
+            <button mat-button (click)="closeDetails()"><i class="x"></i></button>
+        </div>
+    </div>
+
+    <!--<p class="drag-zoom">Drag to zoom</p>-->
+
+    <div class="product-image text-center">
+        <img [src]="imageDisp" class="img-fluid"/>
+        <!--<a href="#" class="play-btn"><img src="../../assets/play.png" /></a>-->
+    </div>
+
+    <ng-container *ngFor="let custom  of details.customizations">
+        <ng-container *ngIf="custom.title === 'Color'">
+                <p class="selection-title"><span class="font-strong">Color:</span> {{selection}}</p>
+            <div class="selection-box d-flex flex-wrap">
+                <ng-container *ngFor="let choice of custom.choices; let i = index">
+                    <div class="selection-item" [class.active]="imgPosition === i" [ngStyle]="{'background-color': choice.choiceColor}"  (click)="selectColor(choice, i)"></div>
+                </ng-container>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="custom.title === 'Variant'">
+            <p class="selection-title"><span class="font-strong">Storage Capacity:</span> {{variantChoice}}</p>
+
+            <div class="selection-box d-flex flex-wrap" >
+                <ng-container *ngFor="let choice of custom.choices; let j = index">
+                    <div class="selection-item" [class.active]="variantPosition === j" (click)="selectVariant(choice, j)">{{choice.selection}}</div>
+
+                </ng-container>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="carrierList && carrierList.length > 0">
+        <p class="selection-title"><span class="font-strong">Carrier:</span></p>
+        <div class="form-input">
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="details.carrier" required disabled>
+                    <mat-option *ngFor="let carrier of carrierList" [value]="carrier">{{carrier.filterTitle}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="details.partnerid && details.partnerid!=='null'">
+        <p class="selection-title">
+            <span class="font-strong">Plan:</span>
+            <a (click)="openRatePlan()" style="cursor: pointer ">
+                <ng-container *ngIf="ratePlan; else choosePlan">
+                    {{ratePlan.data.packageName}}
+                </ng-container>
+                <ng-template #choosePlan>
+                    Choose Plan
+                </ng-template>
+            </a>
+        </p>
+    </ng-container>
+
+    <div class="mt-30">
+        <h3 class="device-price font-strong">{{price | currency:data?.CommonFields?.CurrencyType:'symbol'}}</h3><!--<sup class="font-normal">00</sup>-->
+    </div>
+
+    <div class="add-to-cart d-flex">
+        <div class="quantity">
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="details.quantity" required>
+                    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                </mat-select>
+                <!--<mat-select [(ngModel)]="details.quantity">
+                    <mat-option *ngFor="let option of options">{{option}}</mat-option>
+                </mat-select>-->
+            </mat-form-field>
+        </div>
+        <div class="add-to-card-button">
+            <button class="dxp_Btn btn-primary" (click)="addToBasket(details)">Add to basket</button>
+        </div>
+    </div>
+
+    <div class="mt-30">
+        <mat-accordion>
+            <ng-container *ngFor="let feature  of details.features; let k = index">
+                <mat-expansion-panel [expanded]="k == 0 ? true: false" >
+                    <mat-expansion-panel-header>
+                        {{feature.featureName}}
+                    </mat-expansion-panel-header>
+                    {{feature.featureDesc}}
+                </mat-expansion-panel>
+            </ng-container>
+        </mat-accordion>
+    </div>
+    </ng-container>
+</div>
